@@ -73,3 +73,62 @@ void atras(char texto[])
     Sleep(300);
     printf(".");
 }
+
+
+
+int encontrarDireccionEscritorio(char ruta[])/*** "ruta[]" recibe una cadena de caracteres vacia y le carga la direccion de escritorio "C:\Users\Tupac\Desktop"
+Se usa la macro "SUCCEEDED" esta devuelve "true" o "false", dependiendo de la funcion "SHGetFolderPathA"
+"SHGetFolderPathA" :
+El primer parámetro de SHGetFolderPathA es un identificador de la carpeta especial que se desea obtener. En este caso, se utiliza CSIDL_DESKTOPDIRECTORY, que representa el identificador para el directorio del escritorio.
+El segundo parámetro es un puntero a una estructura de identificador de seguridad (security identifier, SID). Pasar NULL indica que no se necesita una SID.
+El tercer parámetro es un puntero a una cadena de caracteres que recibirá la ruta del directorio del escritorio.
+El cuarto parámetro es un conjunto de flags para controlar el comportamiento de la función. En este caso, se pasa 0 para indicar que no se requieren flags adicionales.
+El quinto parámetro es la cadena donde se almacena el resultado
+*/
+{
+    int flag = -1;
+    if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_DESKTOPDIRECTORY, NULL, 0, ruta)))
+    {
+        flag = 0;
+    }
+    return flag;
+}
+int rutaArchivoEnEscritorio(char rutaArchivo[], char nombreArchivo[])/*** rutaArchivoEnEscritorio devuelve "0" si todo esta bien, "-1" error
+ *** rutaArchivo = almacena al final del codigo la ruta con este formato "C:/Users/Tupac/Desktop/archivo.bin"
+ *** nombreArchivo = nombre archivo es definido con el nombre del archivo "/archivo.bin"
+
+    Se Utiliza "encontrarDireccionEscritorio" para obtener la direccion del escritorio en cualquier computadora.
+    En "direccionEscritorio" se guarda el siguiente valor "C:\Users\Tupac\Desktop"
+    "cambiarSlash" lo modifica devolviendo "C:/Users/Tupac/Desktop" guardando este valor en "direccionEscritorio"
+    Usando la libreria "<string.h>" unimos las cadenas de caracteres "direccionEscritorio" y "nombreArchivo"
+
+    La cadena resultante es "rutaArchivo", variable enviada a la funcion.
+*/
+{
+    char direccionEscritorio[256];
+    int flag = 0;
+    if (encontrarDireccionEscritorio(direccionEscritorio) != -1)
+    {
+        int longitudruta = strlen(direccionEscritorio);
+        cambiarSlash(direccionEscritorio, longitudruta);
+        strcpy(rutaArchivo, strcat(direccionEscritorio, nombreArchivo));
+    }
+    else{
+        flag = -1;
+    }
+return flag;
+}
+
+void cambiarSlash(char ruta[], int validos) /*** cambiarSlash recibe "C:\Users\Tupac\Desktop" y lo transforma a "C:/Users/Tupac/Desktop"
+    ruta[] = "C:\Users\Tupac\Desktop"
+    validos = cantidad de letras cargadas en la cadena de caracteres se obtiene con "strlen()"
+*/
+{
+    for (int i = validos - 1; i >= 0; i--)
+    {
+        if (ruta[i] == '\\')
+        {
+            ruta[i] = '/';
+        }
+    }
+}
