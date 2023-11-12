@@ -9,3 +9,6 @@ int main()
     printf("TODAS PUTAS\n");
     return 0;
 }
+
+void mostrar (){}
+
