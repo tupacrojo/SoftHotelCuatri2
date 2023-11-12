@@ -7,7 +7,7 @@ typedef struct ///  "stHabitacion" habitacion
     int borrado;
     int estado;  // 0 libre; 1 Ocupado;
     int piso;   // pisos
-    stRegCaracteristicas *caracteristicas;// este arreglo puede almacenar 
+    stRegCaracteristicas *caracteristicas;// este arreglo puede almacenar
 }stRegHabitacion;
 
 typedef struct ///  "stReserva" reserva
@@ -42,7 +42,7 @@ typedef struct /// "stUsuario" usuario
     char *estadoCivil; // 0 soltero, 1 divorciado, 2 viudo, 3 casado
 }stRegUsuario;
 
-typedef struct //este es la estructura que alamcena las caracteristicas de la habitacion 
+typedef struct //este es la estructura que alamcena las caracteristicas de la habitacion
 {
     int id;
     int borrado;
@@ -52,5 +52,6 @@ typedef struct //este es la estructura que alamcena las caracteristicas de la ha
 int main()
 {
     printf("Hello world!\n");
+    kososfjfjfsfo
     return 0;
 }
