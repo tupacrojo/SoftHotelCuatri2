@@ -49,10 +49,6 @@ typedef struct //este es la estructura que alamcena las caracteristicas de la ha
     char *tipo; // "Basica, Deluxe, Suite, Suite Premium"
 }stRegCaracteristicas;
 
-
-
-
-
 int main()
 {
     printf("Hello world!\n");
