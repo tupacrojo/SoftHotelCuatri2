@@ -10,5 +10,8 @@ int main()
     return 0;
 }
 
-void mostrar (){}
+void mostrar (){
+
+int x;
+}
 
