@@ -15,7 +15,7 @@ void borraDatosReserva(stReserva *r)
     r->mesSalida = 0;
     r->habitacion.estado = 0;
     r->habitacion.piso = 0;
-    memset(r->habitacion.tipo, 0, 50);
+    memset(r->habitacion.caracteristicas, 0, 10);
 }
 
 /** \fn int esFechaValida(int dia, int mes, int anio)

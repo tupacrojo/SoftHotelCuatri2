@@ -6,7 +6,7 @@
 
 typedef struct ///  "stReserva" reserva
 {
-    stHabitacion habitacion;
+    stRegHabitacion habitacion;
     int borrado;
     // entrada
     int diaEntrada;
