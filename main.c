@@ -36,7 +36,7 @@ typedef struct /// "stUsuario" usuario
     float totalconsumo;
     stRegReserva reserva;
     int edad; // a�os
-    char telefono[20];
+    char *telefono;
     char genero; // m = masculino , f = femenino, o = otros
     int hijos;
     char *estadoCivil; // 0 soltero, 1 divorciado, 2 viudo, 3 casado
