@@ -1,5 +1,5 @@
 #pragma once
-#include "../config/files.h"
+#include "config/files.h"
 
 typedef struct ///  "stConsumibles" elementos disponibles para consumo
 {

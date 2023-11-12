@@ -973,7 +973,7 @@ void mostrarReserva(stUsuario u)
     printf(" D%ca de Salida      : %i\n", 161, u.reserva.diaSalida);
     printf(" Mes de Sal%cda      : %i\n", 161, u.reserva.mesSalida);
     printf(" A%co de Salida      : %i\n", 164, u.reserva.anioSalida);
-    printf(" Tipo de Habitaci%cn : %s\n", 162, u.reserva.habitacion.tipo);
+    //printf(" Tipo de Habitaci%cn : %s\n", 162, u.reserva.habitacion.tipo);
     puts("------------------------------------------------");
 }
 

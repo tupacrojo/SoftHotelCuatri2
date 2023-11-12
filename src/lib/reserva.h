@@ -1,7 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <time.h>
-#include "../config/files.h"
+#include "config/files.h"
 #include "habitacion.h"
 
 typedef struct ///  "stReserva" reserva

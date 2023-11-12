@@ -1,6 +1,6 @@
 #pragma once
 #include <stdio.h>
-#include "../config/files.h"
+#include "config/files.h"
 #include "reserva.h"
 #include "consumible.h"
 

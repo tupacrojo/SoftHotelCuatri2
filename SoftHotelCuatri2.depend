@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1699827095 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\caracteristicas.c
+
+1699826301 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\caracteristicas.h
+
+1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\consumible.c
+	"consumible.h"
+
+1699826855 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\consumible.h
+	"config/files.h"
+
+1699826301 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\config\files.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<shlobj.h>
+
+1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\habitacion.c
+	"habitacion.h"
+
+1699826862 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\habitacion.h
+	<stdio.h>
+	"config/files.h"
+	"caracteristicas.h"
+
+1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\reserva.c
+	"reserva.h"
+
+1699826867 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\reserva.h
+	<stdio.h>
+	<time.h>
+	"config/files.h"
+	"habitacion.h"
+
+1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\menu.c
+	"menu.h"
+
+1699826301 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\menu.h
+	"usuario.h"
+	"utils.h"
+	"reserva.h"
+	"habitacion.h"
+	"utils.h"
+
+1699826864 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\usuario.h
+	<stdio.h>
+	"config/files.h"
+	"reserva.h"
+	"consumible.h"
+
+1699826873 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\utils.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<shlobj.h>
+	"config/files.h"
+
+1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\utils.c
+	"utils.h"
+

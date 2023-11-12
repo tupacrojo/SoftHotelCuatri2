@@ -4,7 +4,7 @@
 #include <string.h>
 #include <windows.h>
 #include <shlobj.h>
-#include "../config/files.h"
+#include "config/files.h"
 
 
 typedef struct
