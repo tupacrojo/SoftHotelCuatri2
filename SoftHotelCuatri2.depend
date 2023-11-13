@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1699881288 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.c
+	"utils.h"
+
+1699881288 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<shlobj.h>
+	"../config/files.h"
+
+1699882729 c:\users\tupac\documents\github\softhotelcuatri2\src\config\files.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<shlobj.h>
+

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "reserva.h"
-#include "utils.h"
+#include "src/lib/reserva.h"
+#include "src/lib/utils.h"
 
 typedef struct nodoLD
 {
@@ -65,7 +65,7 @@ nodoLD *cargarListaDobleArchivo(nodoLD * lista, char archivo[])
             insertarAlPrincipio(lista,aux);
             }
         }
-        
+
     }
     return lista;
 }

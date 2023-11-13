@@ -2,8 +2,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "src/config/files.h"
-#include "src/lib/reserva.h"
+#include "../config/files.h"
+#include "reserva.h"
 
 typedef struct /// "stUsuario" usuario
 {
