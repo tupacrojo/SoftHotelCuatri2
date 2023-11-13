@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "reserva.h"
 #include <string.h>
+#include "reserva.h"
+#include "utils.h"
 
 typedef struct nodoLD
 {
@@ -51,12 +52,32 @@ nodoLD *insertarAlFinal(nodoLD* lista, stReserva dato) {
     return lista;
 }
 
+nodoLD *cargarListaDobleArchivo(nodoLD * lista, char archivo[])
+{
+    if(existeArchivo(archivo) == 0)
+    {
+        FILE * archi = fopen(archivo, "rb");
+        stReserva aux;
+        while (fread(&aux,sizeof(stReserva),1,archi) > 0)
+        {
+            if(esFechaPosterior(aux.diaEntrada,aux.mesEntrada,aux.anioEntrada))
+            {
+            insertarAlPrincipio(lista,aux);
+            }
+        }
+        
+    }
+    return lista;
+}
+
+
+
 void mostrarCaracteristicasHabitacion(stRegHabitacion h)
 {
     int i = 0;
-    while( strcmp(h.caracteristicas[i].tipo,"") == 0 )
+    while( strcmp(h.tipo,"") == 0 )
     {
-        printf("%s\n", h.caracteristicas[i].tipo);
+        printf("%s\n", h.tipo);
         i++;
     }
 }

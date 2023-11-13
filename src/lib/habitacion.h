@@ -10,7 +10,7 @@ typedef struct ///  "stRegHabitacion" habitacion
     int borrado;
     int estado;  // 0 libre; 1 Ocupado;
     int piso;   // pisos
-    stRegCaracteristicas caracteristicas[10];// este arreglo puede almacenar 
+    char tipo[8];// este arreglo puede almacenar 
 }stRegHabitacion;
 
 int obtenerUltimoIdHabitaciones();

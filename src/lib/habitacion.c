@@ -164,7 +164,6 @@ stRegHabitacion agregarHabitacionPorParametro(int id, int piso, int tipo)
     a.piso = piso;
     switch (tipo)
     {
-        /*
     case 0:
         strcpy(a.tipo, "Basica");
         break;
@@ -180,7 +179,6 @@ stRegHabitacion agregarHabitacionPorParametro(int id, int piso, int tipo)
     default:
         strcpy(a.tipo, "Basica");
         break;
-        */
     }
     return a;
 }
