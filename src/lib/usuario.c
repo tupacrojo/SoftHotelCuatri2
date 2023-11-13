@@ -37,8 +37,7 @@ stUsuario agregarUsuarioPorParametro(int id, int tipo, char nombre[], char apell
 /** \fn void agregarUsuarioArchivo()
  * \brief Abre el archivo al final y pide al usuario cargar los datos de la estructura stUsuario en el archivo.
  */
-void agregarUsuarioArchivo()
-{
+void agregarUsuarioArchivo(){
     FILE *archi = fopen(aUsuarios, "ab");
     stUsuario u;
     agregarUsuario(&u);
@@ -982,7 +981,7 @@ void mostrarReservaEnArchivo() // muestra todos los tipos
             fread(&aux, sizeof(stUsuario), 1, archi);
             if (!feof(archi) && (strcmp(aux.reserva.habitacion.tipo, vacio.habitacion.tipo) > 0))
             {
-                mostrarReserva(aux);
+                mostrarReserva(aux.reserva);
                 Sleep(500);
             }
         }
