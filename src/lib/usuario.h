@@ -1,8 +1,9 @@
 #pragma once
+
+#include <stdlib.h>
 #include <stdio.h>
-#include "../config/files.h"
-#include "reserva.h"
-#include "consumible.h"
+#include "src/config/files.h"
+#include "src/lib/reserva.h"
 
 typedef struct /// "stUsuario" usuario
 {
