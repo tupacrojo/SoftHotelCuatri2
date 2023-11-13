@@ -51,6 +51,16 @@ nodoLD *insertarAlFinal(nodoLD* lista, stReserva dato) {
     return lista;
 }
 
+void mostrarCaracteristicasHabitacion(stRegHabitacion h)
+{
+    int i = 0;
+    while( strcmp(h.caracteristicas[i].tipo,"") == 0 )
+    {
+        printf("%s\n", h.caracteristicas[i].tipo);
+        i++;
+    }
+}
+
 void mostrarReserva(stReserva r)
 {
     puts("------------------------------------------------");
@@ -60,20 +70,11 @@ void mostrarReserva(stReserva r)
     printf(" D%ca de Salida      : %i\n", 161, r.diaSalida);
     printf(" Mes de Sal%cda      : %i\n", 161, r.mesSalida);
     printf(" A%co de Salida      : %i\n", 164, r.anioSalida);
-
-    printf(" Tipo de Habitaci%cn : %s\n", 162, r.habitacion.);
+    printf(" Caracteristicas de Habitaci%cn :\n", 162);
+    mostrarCaracteristicasHabitacion(r.habitacion);
     puts("------------------------------------------------");
 }
 
-void mostrarCaracteristicasHabitacion(stRegCaracteristicas h[])
-{
-    int i = 0;
-    while( strcmp(h[i].tipo,"") == 0 )
-    {
-        printf("%s", h[i].tipo);
-        i++;
-    }
-}
 
 // Función para imprimir la lista desde el principio
 void imprimirDesdePrincipio(nodoLD* cabeza) {
