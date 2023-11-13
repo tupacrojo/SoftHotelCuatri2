@@ -31,7 +31,7 @@ void mostrarReserva(stUsuario u);
 void mostrarReservaEnArchivo();
 
 
-void agregarConsumoConsumible(stUsuario u, stConsumibles c);
+/// void agregarConsumoConsumible(stUsuario u, stConsumibles c);
 void agregarUsuario(stUsuario *u);
 stUsuario agregarUsuarioPorParametro(int id, int tipo, char nombre[], char apellido[], char dni[], char contrasena[], int edad, char telefono[], char genero, int hijos, char estadoCivil[]);
 void agregarUsuarioArchivo();

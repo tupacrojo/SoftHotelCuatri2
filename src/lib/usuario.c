@@ -94,12 +94,13 @@ float extraerConsumoUsuario(int id)
     }
 }
 
-
+///*
+/*
 void agregarConsumoConsumible(stUsuario u, stConsumibles c)
 {
     cambiarConsumoUsuario(u.id, c.precio);
 }
-
+*/
 
 /** \fn int obtenerUltimoIdUsuario()
  * \brief Accede al archivo, obtine el ultimo id usuario y lo retorna
@@ -963,19 +964,6 @@ void borraDatosUsuario(stUsuario *u)
     }
 }
 
-void mostrarReserva(stUsuario u)
-{
-    puts("------------------------------------------------");
-    printf(" ID: %i | Nombre: %s | Apellido: %s | DNI: %s\n", u.id, u.nombre, u.apellido, u.DNI);
-    printf(" D%ca de Entrada     : %i\n", 161, u.reserva.diaEntrada);
-    printf(" Mes de Entrada     : %i\n", u.reserva.mesEntrada);
-    printf(" A%co de Entrada     : %i\n", 164, u.reserva.anioEntrada);
-    printf(" D%ca de Salida      : %i\n", 161, u.reserva.diaSalida);
-    printf(" Mes de Sal%cda      : %i\n", 161, u.reserva.mesSalida);
-    printf(" A%co de Salida      : %i\n", 164, u.reserva.anioSalida);
-    printf(" Tipo de Habitaci%cn : %s\n", 162, u.reserva.habitacion.tipo);
-    puts("------------------------------------------------");
-}
 
 void mostrarReservaEnArchivo() // muestra todos los tipos
 {
