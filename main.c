@@ -4,6 +4,10 @@
 #include <conio.h>
 #include <string.h>
 
+///VARIABLE GLOBAL
+
+const char Arreglo[40] = "NombreArchivo.bin";
+
 ///ESTRUCTURA DE CARACTERISTICAS
 
 typedef struct{
@@ -132,7 +136,9 @@ NodoS * AgregarAlPcpioListaSubservicio (NodoS* lista, NodoS* nuevo);
 
 NodoP* CargarListaServicioConArchivo(NodoP * lista);
 NodoP* BuscarServicio(NodoP * lista, char Servicio[]);
-
+NodoP * AltaDeRegistroServicio (NodoP * lista, StRegistroServicio Aux);
+StServicio CargarUnServicio (StRegistroServicio Aux);
+StSubServicio CargarUnSubservicio (StRegistroServicio Aux);
 
 int main()
 {
@@ -229,8 +235,51 @@ NodoP* CargarListaServicioConArchivo(NodoP * lista){
 return lista;
 }
 
+///FUNCION PARA CARGAR UN REGISTRO DE SERVICIO
+
+StServicio CargarUnServicio (StRegistroServicio Aux){
+
+    StServicio Dato;
+
+    Dato.IdServicio = Aux.IdServicio;
+    Dato.Borrado = 1;
+    strcpy(Dato.Servicio,Aux.Servicio);
+
+return Dato;
+}
+
+///FUNCION PARA CARGAR UN REGISTRO DE SUBSERVICIO
+
+StSubServicio CargarUnSubservicio (StRegistroServicio Aux){
+
+    StSubServicio Dato;
+
+    Dato.Precio = Aux.Precio;
+    strcpy(Dato.SubServicio,Aux.SubServicio);
+    Dato.Borrado = 1;
+
+return Dato;
+}
 
 ///FUNCION PARA DAR EL ALTA DE UN REGISTRO DE SERVICIOS
+
+NodoP * AltaDeRegistroServicio (NodoP * lista, StRegistroServicio Aux){
+
+    StSubServicio Dato = CargarUnSubservicio(Aux);
+    NodoS * SubServ = CrearNodoSubservicio(Dato);
+
+    NodoP * ServBuscado = BuscarServicio(lista,Aux.Servicio);
+    if(ServBuscado == NULL){
+        StServicio Dato2 = CargarUnServicio(Aux);
+        NodoP * Serv = CrearNodoServicio(Dato2);
+        lista = AgregarAlPcpioListaServicio(lista,Serv);
+        lista->lista = AgregarAlPcpioListaSubservicio(lista->lista,SubServ);
+    }else{
+        ServBuscado->lista = AgregarAlPcpioListaSubservicio(ServBuscado->lista,SubServ);
+    }
+
+return lista;
+}
 
 ///FUNCION PARA BUSCAR UN SERVICIO
 
@@ -240,7 +289,7 @@ NodoP* BuscarServicio(NodoP * lista, char Servicio[]){
     NodoP*seg = lista;
 
     while(seg != NULL && Aux == NULL){
-        if(strcmpi(seg->Servicio,Servicio) == 0){
+        if(strcmpi(seg->Dato.Servicio,Servicio) == 0){
             Aux = seg;
         }
         seg = seg->siguiente;
