@@ -29,8 +29,8 @@ nodoLD* crearNodo(stReserva dato) {
 nodoLD* insertarAlPrincipio(nodoLD* lista, stReserva dato) {
     nodoLD* nuevoNodo = crearNodo(dato);
     nuevoNodo->sig = lista;
-    if (lista != NULL) {
-        (lista)->ant = nuevoNodo;
+    if (lista) {
+        lista->ant = nuevoNodo;
     }
     lista = nuevoNodo;
     return lista;
@@ -42,7 +42,7 @@ nodoLD *insertarAlFinal(nodoLD* lista, stReserva dato) {
     nodoLD* ultimo = lista;
     if (lista == NULL) {
         lista = nuevoNodo;
-        return;
+        return lista;
     }
     while (ultimo->sig != NULL) {
         ultimo = ultimo->sig;
@@ -70,8 +70,6 @@ nodoLD *cargarListaDobleArchivo(nodoLD * lista, char archivo[])
     return lista;
 }
 
-
-
 void mostrarCaracteristicasHabitacion(stRegHabitacion h)
 {
     int i = 0;
@@ -98,22 +96,22 @@ void mostrarReserva(stReserva r)
 
 
 // Función para imprimir la lista desde el principio
-void imprimirDesdePrincipio(nodoLD* cabeza) {
-    while (cabeza != NULL) {
-        printf("%d ", cabeza->reserva);
-        cabeza = cabeza->sig;
+void imprimirDesdePrincipio(nodoLD* lista) {
+    while (lista != NULL) {
+        mostrarReserva(lista->reserva);
+        lista = lista->sig;
     }
 }
 
 // Función para imprimir la lista desde el final
 void imprimirDesdeFinal(nodoLD* lista) {
     nodoLD* ultimo = inicListaDoble();
-    while (lista != NULL) {
+    while (lista) {
         ultimo = lista;
         lista = lista->sig;
     }
-    while (ultimo != NULL) {
-        printf("%d ", ultimo->reserva);
+    while (ultimo) {
+        mostrarReserva(ultimo->reserva);
         ultimo = ultimo->ant;
     }
 }
