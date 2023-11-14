@@ -45,9 +45,13 @@ int main()
 
 /*
     /// FUNCION PARA VER LAS GANANCIAS DE UN MES:
+    int mes3 =0;
+    printf("Ingrese un numero de mes: \n ");
+    scanf("%i",&mes3);
     int ganancia=0;
-    ganancia = sumarCantidadGananciasDeUnMes(eventos,validos,mesB);
+    ganancia = sumarCantidadGananciasDeUnMes(eventos,validos,mes3);
     printf("La ganancia es de : %i \n",ganancia);
+
 
 */
     return 0;
