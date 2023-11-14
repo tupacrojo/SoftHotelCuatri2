@@ -1,7 +1,9 @@
 # depslib dependency file v1.0
-1699842275 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\main.c
+1699928650 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\main.c
 	<stdio.h>
 	<stdlib.h>
+	<malloc.h>
+	<string.h>
 
 1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\caracteristicas.c
 
