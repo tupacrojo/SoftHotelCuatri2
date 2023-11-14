@@ -39,7 +39,7 @@ int main()
     /// FUNCION PARA SUMAR LA CANTIDAD DE EVENTOS DE UN MES:
     int mes2 =0;
     printf("Ingrese un numero de mes: \n ");
-    scanf("%i",&mesB);
+    scanf("%i",&mes2);
     int suma= sumarCantidadEventosDeUnMes(eventos,validos,mes2);
     printf("La cantidad de eventos del mes %i es : %i \n",mes2,suma);
 
