@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "main.c"
 
 
 /// ESTRUCTURAS:
@@ -82,5 +83,6 @@ void guardarProximosEventos (char archivo[], stRegistroEvento aux);
 void guardarEventosEnArchivo (celdaEvento eventos[], int validos);
 void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int idMes, int dia);
 int insertarEventoOrdenado(celdaEvento eventos[], int validos, stDatosMes datoMes);
+int sumarCantidadEventosDeUnMes(celdaEvento eventos[], int validos, int idMes);
 
 #endif // EVENTO_H_INCLUDED

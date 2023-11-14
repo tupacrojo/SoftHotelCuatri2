@@ -2,6 +2,7 @@
 #define EVENTO_C_INCLUDED
 #include "evento.h"
 
+
 const char nombreArchivo[20] = {"eventos.bin"};
 
 /// FUCNIONES DE LISTAS:
@@ -409,8 +410,32 @@ void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int
         printf(" \nNO HAY EVENTOS EL MES ELEGIDO \n");
     }
 }
+int sumarCantidadEventosDeUnMes(celdaEvento eventos[], int validos, int idMes)
+{
+    int suma=0;
+    int pos= buscaPosMes(eventos,idMes,validos);
+    if(pos == -1)
+    {
+        printf("\n NO HAY EVENTOS ESE MES \n");
+    }
+    else
+    {
+        if(eventos[pos].listaDeDias != NULL)
+        {
+            stEvento * seg = eventos[pos].listaDeDias;
+            while (seg != NULL)
+            {
+                suma ++;
+                seg = seg->siguiente;
+            }
+        }
+    }
+
+    return suma;
+}
 
 
 
 
 #endif // EVENTO_C_INCLUDED
+
