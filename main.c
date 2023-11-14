@@ -25,7 +25,8 @@ int main()
    funcionSumarCantEventosMes(eventos,validos);
     /// FUNCION PARA VER LAS GANANCIAS DE UN MES:
    funcionSumarGananciasMes(eventos,validos);
-
+ /* /// FUNCION PARA BORRAR UN EVENTO DE UN MES:
+   funcionBorrarEvento(eventos,validos);
 
     return 0;
 }
