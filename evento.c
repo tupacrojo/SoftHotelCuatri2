@@ -1,81 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-<<<<<<< Updated upstream
-=======
-#include <string.h>
-//#include "evento.h"
+#ifndef EVENTO_C_INCLUDED
+#define EVENTO_C_INCLUDED
+#include "evento.h"
 
-const char nombreArchivo[20] = {"eventos.bin"};
-
-typedef struct
-{
-    char mes[10];
-    int idMes;
-    int dia;
-    char tipoEvento [20];
-    char horaInicio[6];
-    char horaFin[6];
-    int cantPersonas;
-    int precio;
-    char nombre[20];
-    char apellido[20];
-    char telefono[20];
-    char dni[10];
-
-} stRegistroEvento;  /// estructura para cargar el archivo
-
-typedef struct
-{
-    int dia;
-    char tipoEvento [20];
-    char horaInicio[6];
-    char horaFin[6];
-    int cantPersonas;
-    int precio;
-    char nombre[20];
-    char apellido[20];
-    char telefono[20];
-    char dni[10];
-
-} stClienteEvento;  /// cliente
-
-typedef struct stEvento
-{
-    stClienteEvento dato;
-    struct stEvento * siguiente;
-
-} stEvento;  /// lista
-
-typedef struct
-{
-    int idMes;
-    char mes[10];
-}stDatosMes;
-
-typedef struct
-{
-    stDatosMes datoMes;
-    stEvento * listaDeDias;
-
-} celdaEvento;  /// arreglo
-
-
-
-/// PROTOTIPADO:
-int pasarDatosDeArchivoAarregloEventos(celdaEvento eventos [],int dim, int validos);
-int altaEventos(celdaEvento eventos[], int dim, int validos, stClienteEvento cliente , stDatosMes datoMes);
-int buscaPosMes(celdaEvento eventos[],int idMes, int validos);
-int agregarMes (celdaEvento eventos[], int dim, char mesElegido[], int validos);
-void buscarMesYmostrar(celdaEvento eventos[], int validos, int idMes);
-void mostrarMesyDias(celdaEvento eventos[], int validos);
-void guardarProximosEventos (char archivo[], stRegistroEvento aux);
-void guardarEventosEnArchivo (celdaEvento eventos[], int validos);
-void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int idMes, int dia);
-///
-int insertarEventoOrdenado(celdaEvento eventos[], int validos, stDatosMes datoMes);
-void insertarEvento(celdaEvento eventos[], int ultPosVal, stDatosMes datoMes);
-int ordenamientoinsercionEvento (celdaEvento eventos[], int validos, stDatosMes datoMes);
-
+/// FUCNIONES DE LISTAS:
 
 stEvento * inicListaEvento ()
 {
@@ -236,6 +163,7 @@ stEvento * buscarUnEvento (stEvento * lista, int dia)
 
 }
 
+/// CARGAR ARCHIVO
 
 stRegistroEvento cargarUnEvento()
 {
@@ -302,11 +230,7 @@ void cargarArchivo ()
 
 }
 
-
-
-/// NUEVO:
-
-
+/// CARGAR ARREGLO
 
 int pasarDatosDeArchivoAarregloEventos(celdaEvento eventos [],int dim, int validos)
 {
@@ -379,23 +303,6 @@ int buscaPosMes(celdaEvento eventos[],int idMes, int validos)
 
     return rta;
 }
-/*
-int agregarMes (celdaEvento eventos[], int dim, char mesElegido[], int validos)
-{
-    if(validos<dim)
-    {
-        strcpy(eventos[validos].mes, mesElegido);
-        eventos[validos].listaDeDias = inicListaEvento();
-        validos ++;
-    }
-
-
-    return validos;
-}
-*/
-
-
-
 
 int insertarEventoOrdenado(celdaEvento eventos[], int validos, stDatosMes datoMes)
 {
@@ -411,32 +318,7 @@ int insertarEventoOrdenado(celdaEvento eventos[], int validos, stDatosMes datoMe
 
     return validos+1;
 }
-/*
-void insertarEvento(celdaEvento eventos[], int ultPosVal, stDatosMes datoMes)
-{
-    int i=ultPosVal;
-     while (i >= 0 && datoMes.idMes < eventos[i].datoMes.idMes)
-    {
-        eventos[i+1]=eventos[i];
-        eventos[i+1].listaDeDias = eventos[i].listaDeDias;
-        i--;
-    }
-    eventos[i+1].datoMes = datoMes;
-    eventos[i+1].listaDeDias = inicListaEvento();
-}
 
-int ordenamientoinsercionEvento (celdaEvento eventos[], int validos, stDatosMes datoMes)
-{
-    int i=0;
-    while (i<validos-1)
-    {
-        insertarEvento(eventos,i,datoMes);
-        i++;
-    }
-
-    return validos;
-}
-*/
 ///MOSTRAR
 
 void buscarMesYmostrar(celdaEvento eventos[], int validos, int idMes)
@@ -504,6 +386,7 @@ void guardarProximosEventos (char archivo[], stRegistroEvento aux)
 }
 
 
+/// FUNCIONALIDADES
 
 void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int idMes, int dia)
 {
@@ -521,92 +404,11 @@ void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int
     }
     else
     {
-        printf(" \n NO HAY EVENTOS EL MES ELEGIDO \n");
+        printf(" \nNO HAY EVENTOS EL MES ELEGIDO \n");
     }
 }
 
 
->>>>>>> Stashed changes
-
-typedef struct ///  "stHabitacion" habitacion
-{
-    int id;
-    int borrado;
-    int estado;  // 0 libre; 1 Ocupado;
-    int piso;   // pisos
-    stRegCaracteristicas *caracteristicas;// este arreglo puede almacenar
-}stRegHabitacion;
-
-typedef struct ///  "stReserva" reserva
-{
-    stRegHabitacion habitacion;
-    int borrado;
-    // entrada
-    int diaEntrada;
-    int mesEntrada;
-    int anioEntrada;
-    // salida
-    int diaSalida;
-    int mesSalida;
-    int anioSalida;
-}stRegReserva;
-
-typedef struct /// "stUsuario" usuario
-{
-    int id;   // auto incrementable
-    int borrado;
-    int tipo; // GodMan(), administrador(sueldos, dar de alta y baja empleado), recepcionista(Check In, Check Out), Huesped(consumos)
-    char *contrasena;
-    char *nombre; // lo que va antes del apellido
-    char *apellido;
-    char *DNI;
-    float totalconsumo;
-    stRegReserva reserva;
-    int edad; // a�os
-    char *telefono;
-    char genero; // m = masculino , f = femenino, o = otros
-    int hijos;
-    char *estadoCivil; // 0 soltero, 1 divorciado, 2 viudo, 3 casado
-}stRegUsuario;
-
-typedef struct //este es la estructura que alamcena las caracteristicas de la habitacion
-{
-    int id;
-    int borrado;
-    char *tipo; // "Basica, Deluxe, Suite, Suite Premium"
-}stRegCaracteristicas;
-
-int main()
-
-{
-<<<<<<< Updated upstream
-    printf("Hello world!\n");
-    kososfjfjfsfo
-=======
-
- int validos =0;
- celdaEvento eventos[11];
- //cargarArchivo();
- validos = pasarDatosDeArchivoAarregloEventos(eventos,11,validos);
- mostrarMesyDias(eventos,validos);
-
- /// FUNCION PARA VER LOS EVENTOS DE UN MES:
-
- /* int mes=0;
-  printf("Ingrese un numero de mes: \n ");
-  scanf("%i",&mes);
-  buscarMesYmostrar(eventos,validos,mes);
-*/
-  ///FUNCION PARA BUSCAR SI UNA FECHA ESTA DISPONIBLE PARA UN EVENTO:
-
-  int dia=0; int mesB=0;
-  printf("Ingrese un numero de mes: \n ");
-  scanf("%i",&mesB);
-  printf("Ingrese un dia: \n ");
-  scanf("%i",&dia);
-  buscarYmostrarFechaDisponibleEvento(eventos,validos,mesB,dia);
 
 
->>>>>>> Stashed changes
-    return 0;
-}
+#endif // EVENTO_C_INCLUDED
