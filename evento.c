@@ -433,6 +433,27 @@ int sumarCantidadEventosDeUnMes(celdaEvento eventos[], int validos, int idMes)
 }
 
 
+int sumarCantidadGananciasDeUnMes(celdaEvento eventos[], int validos, int idMes)
+{
+    int suma=0;
+    int pos= buscaPosMes(eventos,idMes,validos);
+    if(pos == -1)
+    {
+        printf("\n NO HAY EVENTOS ESE MES \n");
+    }
+    else
+    {
+        if(eventos[pos].listaDeDias != NULL)
+        {
+            stEvento * seg = eventos[pos].listaDeDias;
+            while (seg != NULL)
+            {
+                suma = suma +seg->dato.precio;
+                seg = seg->siguiente;
+            }
+        }
+    }
 
-
+    return suma;
+}
 

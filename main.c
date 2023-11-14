@@ -43,7 +43,7 @@ int main()
     int suma= sumarCantidadEventosDeUnMes(eventos,validos,mes2);
     printf("La cantidad de eventos del mes %i es : %i \n",mes2,suma);
 
-/*
+
     /// FUNCION PARA VER LAS GANANCIAS DE UN MES:
     int mes3 =0;
     printf("Ingrese un numero de mes: \n ");
@@ -53,6 +53,6 @@ int main()
     printf("La ganancia es de : %i \n",ganancia);
 
 
-*/
+
     return 0;
 }

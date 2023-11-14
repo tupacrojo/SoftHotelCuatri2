@@ -82,5 +82,6 @@ void guardarEventosEnArchivo (celdaEvento eventos[], int validos);
 void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int idMes, int dia);
 int insertarEventoOrdenado(celdaEvento eventos[], int validos, stDatosMes datoMes);
 int sumarCantidadEventosDeUnMes(celdaEvento eventos[], int validos, int idMes);
+int sumarCantidadGananciasDeUnMes(celdaEvento eventos[], int validos, int idMes);
 
 #endif // EVENTO_H_INCLUDED
