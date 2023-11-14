@@ -1,7 +1,5 @@
-#ifndef EVENTO_C_INCLUDED
-#define EVENTO_C_INCLUDED
 #include "evento.h"
-
+#include "string.h"
 
 const char nombreArchivo[20] = {"eventos.bin"};
 
@@ -437,5 +435,4 @@ int sumarCantidadEventosDeUnMes(celdaEvento eventos[], int validos, int idMes)
 
 
 
-#endif // EVENTO_C_INCLUDED
 

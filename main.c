@@ -3,7 +3,7 @@
 #include <string.h>
 #include "evento.h"
 
-const char nombreArchivo[20] = {"eventos.bin"};
+
 
 int main()
 
