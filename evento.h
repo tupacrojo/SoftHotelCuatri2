@@ -87,5 +87,7 @@ void funcionVerEventosMes(celdaEvento eventos[],int validos);
 void funcionBuscarFechaDispo(celdaEvento eventos [], int validos);
 void funcionSumarCantEventosMes(celdaEvento eventos [], int validos);
 void funcionSumarGananciasMes(celdaEvento eventos[], int validos);
+void buscarYborrarEvento(celdaEvento eventos[], int validos, int idMes, int dia);
+void funcionBorrarEvento(celdaEvento eventos[],int validos);
 
 #endif // EVENTO_H_INCLUDED

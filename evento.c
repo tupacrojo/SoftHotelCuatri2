@@ -496,4 +496,26 @@ void funcionSumarGananciasMes(celdaEvento eventos[], int validos)
 }
 
 
+void buscarYborrarEvento(celdaEvento eventos[], int validos, int idMes, int dia)
+{
+    int pos = buscaPosMes(eventos,idMes,validos);
+    if(pos == -1)
+    {
+        printf(" NO EXISTE ESE EVENTO \n");
+    } else
+    {
+        eventos[pos].listaDeDias = borrarUnEvento(eventos[pos].listaDeDias, dia);
+    }
+}
+void funcionBorrarEvento(celdaEvento eventos[],int validos)
+{
+    int idMes =0, dia = 0;
+    printf("\n Ingrese NUMERO de MES del evento que quiere borrar: \n");
+    scanf("%i", &idMes);
+    printf("Ingrese el DIA del evento que quiere borrar: \n");
+    scanf("%i", &dia);
+    buscarYborrarEvento(eventos, validos, idMes, dia);
+    printf("\n BORRADO: \n");
+    mostrarMesyDias(eventos,validos);
 
+}
