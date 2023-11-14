@@ -2,6 +2,8 @@
 #define EVENTO_C_INCLUDED
 #include "evento.h"
 
+const char nombreArchivo[20] = {"eventos.bin"};
+
 /// FUCNIONES DE LISTAS:
 
 stEvento * inicListaEvento ()
