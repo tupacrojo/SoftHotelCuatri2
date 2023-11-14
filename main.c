@@ -35,13 +35,28 @@ typedef struct {
 }archivo;
 
 ///                                     PROTOTIPADO
+
+NodoPiso * iniclista ();
+NodoPiso * crearNodo (archivo DATO);
+NodoPiso * agregarALista(NodoPiso * lista, NodoPiso * DATO);
+void CargarArray (stDeCelda ARRAY[]);
 stDeCelda insertar (stDeCelda array[], archivo aux,int posicion);
+void FuncionPrincipal ();
+
+void CargarArchi (FILE * archi);
+void mostrar (FILE * archi);
+void  mostrarLista(NodoPiso * lista);
+
+void mostrarArrayCompleto (stDeCelda ARRAY[]);
+
+
 
 
 
 
 int main()
 {
+     FuncionPrincipal ();
 
     return 0;
 }
@@ -102,7 +117,120 @@ return array[posicion];
 void FuncionPrincipal (){
     stDeCelda PISOS [12];
 
+    FILE * archi ;
+    //archi = fopen(NOMBRE,"ab");
+
+    //CargarArchi(archi);
+
+    //fclose(archi);
+
+    archi = fopen(NOMBRE,"rb");
+
+    mostrar (archi);
+
     CargarArray(PISOS);
 
+    mostrarArrayCompleto(PISOS);
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+void CargarArchi (FILE * archi){
+    char seleccoin = 's';
+
+    archivo aux;
+
+    while (seleccoin != 'n'){
+        printf("\nid de la habitacion: ");
+        scanf ("%i", &aux.id);
+
+        printf("Piso: ");
+        scanf ("%i", &aux.idPiso);
+
+        printf("cantidad de camas: ");
+        scanf ("%i", &aux.cantCamas);
+
+        printf("caracteristicas: ");
+        fflush(stdin);
+        scanf ("%s", aux.caracteristicas);
+
+        printf("tipo de cama: ");
+        fflush(stdin);
+        scanf ("%s", aux.tipoDeCama);
+
+        fwrite (&aux,sizeof(archivo),1,archi);
+
+        printf ("       desea seguir cargando datos?... ");
+        fflush(stdin);
+        scanf ("%c", &seleccoin);
+    }
+}
+
+void mostrar (FILE * archi){
+    archivo aux;
+    while (fread (&aux,sizeof(archivo),1,archi)>0){
+        printf("\nid: %i",aux.id);
+        printf("\npiso: %i ",aux.idPiso);
+        printf("\ncantidad de camas: %i ",aux.cantCamas);
+        printf("\ntipo de cama: %s",aux.tipoDeCama);
+        printf("\ncaracteristica especial: %s",aux.caracteristicas);
+        printf("\n----------------------------");
+
+
+    }
+}
+
+void  mostrarLista(NodoPiso * lista){
+
+    while (lista != NULL){
+
+        printf("\nid: %i",lista->DATOS.id);
+        printf("\ncantidad de camas: %i ",lista->DATOS.cantCamas);
+        printf("\ntipo de cama: %s",lista->DATOS.tipoDeCama);
+        printf("\ncaracteristica especial: %s",lista->DATOS.caracteristicas);
+        printf("\n----------------------------");
+        lista = lista->siguiente;
+    }
+}
+
+
+
+void mostrarArrayCompleto (stDeCelda ARRAY[]){
+    int i =0;
+    printf("ACA ENTRAMOS A MOSTRAR LAS LISTAASSSSS\n\n");
+    while (i < 12){
+        if (ARRAY[i].lista == NULL){
+            printf ("el piso %i esta vacio\n", i);
+        }else{
+             printf ("el piso %i\n\n", i);
+            mostrarLista(ARRAY[i].lista);
+        }
+        i++;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
