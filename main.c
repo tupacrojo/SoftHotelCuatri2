@@ -49,6 +49,8 @@ void  mostrarLista(NodoPiso * lista);
 
 void mostrarArrayCompleto (stDeCelda ARRAY[]);
 
+void iniciallizarTodo (stDeCelda ARRAY[]);
+
 
 
 
@@ -93,6 +95,8 @@ void CargarArray (stDeCelda ARRAY[]){
     FILE * archi = fopen (NOMBRE,"rb");
     archivo aux;
 
+    iniciallizarTodo(ARRAY);
+
     while (fread(&aux,sizeof(archivo),1,archi)>0){
        ARRAY[aux.idPiso-1] = insertar(ARRAY,aux,aux.idPiso-1);
     }
@@ -100,8 +104,19 @@ void CargarArray (stDeCelda ARRAY[]){
     fclose(archi);
 }
 
+void iniciallizarTodo (stDeCelda ARRAY[]){
+    int x = 0;
+
+    while (x < 12){
+        ARRAY[x].lista = iniclista();
+        x++;
+    }
+}
+
 
 stDeCelda insertar (stDeCelda array[], archivo aux,int posicion){
+
+
     if (array[posicion].lista == NULL){
         array[posicion].lista = crearNodo(aux);
     }else{
@@ -134,15 +149,9 @@ void FuncionPrincipal (){
 
 
 
-
-
-
-
-
-
-
-
 }
+
+
 
 
 void CargarArchi (FILE * archi){
@@ -207,12 +216,12 @@ void  mostrarLista(NodoPiso * lista){
 
 void mostrarArrayCompleto (stDeCelda ARRAY[]){
     int i =0;
-    printf("ACA ENTRAMOS A MOSTRAR LAS LISTAASSSSS\n\n");
+    printf("\nACA ENTRAMOS A MOSTRAR LAS LISTAASSSSS\n\n");
     while (i < 12){
         if (ARRAY[i].lista == NULL){
-            printf ("el piso %i esta vacio\n", i);
+            printf ("el piso %i esta vacio\n", i+1);
         }else{
-             printf ("el piso %i\n\n", i);
+             printf ("el piso %i\n\n", i+1);
             mostrarLista(ARRAY[i].lista);
         }
         i++;
