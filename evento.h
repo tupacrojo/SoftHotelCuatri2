@@ -83,5 +83,9 @@ void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int
 int insertarEventoOrdenado(celdaEvento eventos[], int validos, stDatosMes datoMes);
 int sumarCantidadEventosDeUnMes(celdaEvento eventos[], int validos, int idMes);
 int sumarCantidadGananciasDeUnMes(celdaEvento eventos[], int validos, int idMes);
+void funcionVerEventosMes(celdaEvento eventos[],int validos);
+void funcionBuscarFechaDispo(celdaEvento eventos [], int validos);
+void funcionSumarCantEventosMes(celdaEvento eventos [], int validos);
+void funcionSumarGananciasMes(celdaEvento eventos[], int validos);
 
 #endif // EVENTO_H_INCLUDED

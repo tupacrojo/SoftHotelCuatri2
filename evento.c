@@ -457,3 +457,43 @@ int sumarCantidadGananciasDeUnMes(celdaEvento eventos[], int validos, int idMes)
     return suma;
 }
 
+void funcionVerEventosMes(celdaEvento eventos[],int validos)
+{
+    int mes=0;
+    printf("Ingrese un numero de mes: \n ");
+    scanf("%i",&mes);
+    buscarMesYmostrar(eventos,validos,mes);
+}
+
+void funcionBuscarFechaDispo(celdaEvento eventos [], int validos)
+{
+    int dia=0;
+    int mesB=0;
+    printf("Ingrese un numero de mes: \n ");
+    scanf("%i",&mesB);
+    printf("Ingrese un dia: \n ");
+    scanf("%i",&dia);
+    buscarYmostrarFechaDisponibleEvento(eventos,validos,mesB,dia);
+}
+
+void funcionSumarCantEventosMes(celdaEvento eventos [], int validos)
+{
+    int mes2 =0;
+    printf("Ingrese un numero de mes: \n ");
+    scanf("%i",&mes2);
+    int suma= sumarCantidadEventosDeUnMes(eventos,validos,mes2);
+    printf("La cantidad de eventos del mes %i es : %i \n",mes2,suma);
+}
+
+void funcionSumarGananciasMes(celdaEvento eventos[], int validos)
+{
+    int mes3 =0;
+    printf("Ingrese un numero de mes: \n ");
+    scanf("%i",&mes3);
+    int ganancia=0;
+    ganancia = sumarCantidadGananciasDeUnMes(eventos,validos,mes3);
+    printf("La ganancia es de : %i \n",ganancia);
+}
+
+
+

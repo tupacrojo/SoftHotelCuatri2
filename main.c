@@ -11,47 +11,20 @@ int main()
 
     int validos =0;
     celdaEvento eventos[11];
-//cargarArchivo();
+    //cargarArchivo();
 
     /// FUNCION PARA CARGAR EL ARREGLO:
     validos = pasarDatosDeArchivoAarregloEventos(eventos,11,validos);
-
     /// FUNCION PARA MOSTRAR EL ARREGLO COMPLETO:
     mostrarMesyDias(eventos,validos);
-
     /// FUNCION PARA VER LOS EVENTOS DE UN MES:
-
-    int mes=0;
-    printf("Ingrese un numero de mes: \n ");
-    scanf("%i",&mes);
-    buscarMesYmostrar(eventos,validos,mes);
-
+    funcionVerEventosMes(eventos,validos);
     ///FUNCION PARA BUSCAR SI UNA FECHA ESTA DISPONIBLE PARA UN EVENTO:
-
-    int dia=0;
-    int mesB=0;
-    printf("Ingrese un numero de mes: \n ");
-    scanf("%i",&mesB);
-    printf("Ingrese un dia: \n ");
-    scanf("%i",&dia);
-    buscarYmostrarFechaDisponibleEvento(eventos,validos,mesB,dia);
-
+    funcionBuscarFechaDispo(eventos,validos);
     /// FUNCION PARA SUMAR LA CANTIDAD DE EVENTOS DE UN MES:
-    int mes2 =0;
-    printf("Ingrese un numero de mes: \n ");
-    scanf("%i",&mes2);
-    int suma= sumarCantidadEventosDeUnMes(eventos,validos,mes2);
-    printf("La cantidad de eventos del mes %i es : %i \n",mes2,suma);
-
-
+   funcionSumarCantEventosMes(eventos,validos);
     /// FUNCION PARA VER LAS GANANCIAS DE UN MES:
-    int mes3 =0;
-    printf("Ingrese un numero de mes: \n ");
-    scanf("%i",&mes3);
-    int ganancia=0;
-    ganancia = sumarCantidadGananciasDeUnMes(eventos,validos,mes3);
-    printf("La ganancia es de : %i \n",ganancia);
-
+   funcionSumarGananciasMes(eventos,validos);
 
 
     return 0;
