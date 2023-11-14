@@ -125,12 +125,17 @@ typedef struct NodoP{
 NodoP * InicListaPrincipal();
 NodoP * CrearNodoServicio(StServicio Dato);
 NodoP * AgregarAlPcpioListaServicio (NodoP* lista, NodoP* nuevo);
+NodoP * InsertarOrdenadoListaServicio (NodoP* lista,NodoP* nuevo);
+void MostrarListaServicio(NodoP*lista);
+void MostrarUnServicio(StServicio Dato);
 
 ///LISTA SECUNDARIA
 
 NodoS * InicListaSecundaria();
 NodoS * CrearNodoSubservicio(StSubServicio Dato);
 NodoS * AgregarAlPcpioListaSubservicio (NodoS* lista, NodoS* nuevo);
+void MostrarListaSubServicio(NodoS*lista);
+void MostrarUnSubServicio(StSubServicio Dato);
 
 ///FUNCIONES DE ESTRUCTURA COMPUESTA
 
@@ -140,9 +145,23 @@ NodoP * AltaDeRegistroServicio (NodoP * lista, StRegistroServicio Aux);
 StServicio CargarUnServicio (StRegistroServicio Aux);
 StSubServicio CargarUnSubservicio (StRegistroServicio Aux);
 
+///FUNCIONES PARA EL ARCHIVO
+
+void CargarUnArchivo();
+void MostrarUnArchivo();
+void MostrarUnRegistro(StRegistroServicio Aux);
+StRegistroServicio CargarUnRegistro();
+
+
+
 int main()
 {
+    ///CargarUnArchivo();
+    ///MostrarUnArchivo();
+    NodoP*lista = InicListaPrincipal();
 
+    lista = CargarListaServicioConArchivo(lista);
+    MostrarListaServicio(lista);
 
     return 0;
 }
@@ -184,6 +203,31 @@ NodoS * CrearNodoSubservicio(StSubServicio Dato){
     nuevo->Dato = Dato;
 
 return nuevo;
+}
+
+///FUNCION PARA INSERTAR ORDENADO UN SERVICIO
+
+NodoP * InsertarOrdenadoListaServicio (NodoP* lista,NodoP* nuevo){
+
+    if(lista == NULL){
+        lista = nuevo;
+    }else{
+        if(nuevo->Dato.IdServicio < lista->Dato.IdServicio){
+            lista = AgregarAlPcpioListaServicio(lista,nuevo);
+        }else{
+            NodoP*ante = lista;
+            NodoP*seg = lista->siguiente;
+
+            while(seg!=NULL && seg->Dato.IdServicio < nuevo->Dato.IdServicio){
+                ante = seg;
+                seg = seg->siguiente;
+            }
+            nuevo->siguiente = seg;
+            ante->siguiente = nuevo;
+        }
+    }
+
+return lista;
 }
 
 ///FUNCION PARA AGREGAR UN SERVICIO AL INICIO DE LA LISTA
@@ -272,11 +316,10 @@ NodoP * AltaDeRegistroServicio (NodoP * lista, StRegistroServicio Aux){
     if(ServBuscado == NULL){
         StServicio Dato2 = CargarUnServicio(Aux);
         NodoP * Serv = CrearNodoServicio(Dato2);
-        lista = AgregarAlPcpioListaServicio(lista,Serv);
-        lista->lista = AgregarAlPcpioListaSubservicio(lista->lista,SubServ);
-    }else{
-        ServBuscado->lista = AgregarAlPcpioListaSubservicio(ServBuscado->lista,SubServ);
+        lista = InsertarOrdenadoListaServicio(lista,Serv);
+        ServBuscado = BuscarServicio(lista,Aux.Servicio);
     }
+    ServBuscado->lista = AgregarAlPcpioListaSubservicio(ServBuscado->lista,SubServ);
 
 return lista;
 }
@@ -296,6 +339,127 @@ NodoP* BuscarServicio(NodoP * lista, char Servicio[]){
     }
 
 return Aux;
+}
+
+///MOSTRAR UN REGISTRO DE SERVICIO
+
+void MostrarUnServicio(StServicio Dato){
+
+    puts("--------------------------------------");
+    printf("ID SERVICIO: %d \n",Dato.IdServicio);
+    printf("NOMBRE DEL SERVICIO: %s \n",Dato.Servicio);
+    puts("--------------------------------------");
+
+}
+
+///MOSTRAR UN REGISTRO DE SUBSERVICIO
+
+void MostrarUnSubServicio(StSubServicio Dato){
+
+    puts("--------------------------------------");
+    printf("NOMBRE DEL SUBSERVICIO: %s \n",Dato.SubServicio);
+    printf("PRECIO: %.2f \n",Dato.Precio);
+    puts("--------------------------------------");
+
+}
+
+///FUNCION PARA MOSTRAR LOS DATOS DENTRO DE LA ESTRUCTURA COMPUESTA
+
+void MostrarListaServicio(NodoP*lista){
+
+    NodoP*seg = lista;
+
+    while(seg!=NULL){
+        MostrarUnServicio(seg->Dato);
+        MostrarListaSubServicio(lista->lista);
+        seg = seg->siguiente;
+    }
+}
+
+void MostrarListaSubServicio(NodoS*lista){
+
+    NodoS*seg = lista;
+
+    while(seg!=NULL){
+        MostrarUnSubServicio(seg->Dato);
+        seg = seg->siguiente;
+    }
+}
+
+///FUNCION PARA MOSTRAR UN REGISTRO
+
+void MostrarUnRegistro(StRegistroServicio Aux){
+
+    puts("--------------------------------------");
+    printf("ID SERVICIO: %d \n",Aux.IdServicio);
+    printf("NOMBRE DEL SERVICIO: %s \n",Aux.Servicio);
+    printf("NOMBRE DEL SUBSERVICIO: %s \n",Aux.SubServicio);
+    printf("PRECIO: %.2f \n",Aux.Precio);
+    puts("--------------------------------------");
+
+}
+
+///FUNCION PARA MOSTRAR UN ARCHIVO
+
+void MostrarUnArchivo(){
+
+    StRegistroServicio Aux;
+
+    FILE * archi = fopen(Arreglo,"rb");
+
+    if(archi!=NULL){
+        while(fread(&Aux,sizeof(StRegistroServicio),1,archi)>0){
+            MostrarUnRegistro(Aux);
+        }
+
+        fclose(archi);
+    }else{
+        printf("El archivo se abrio incorrectamente\n");
+    }
+}
+
+
+///FUNCION PARA CARGAR UN REGISTRO DE SERVICIOS
+
+StRegistroServicio CargarUnRegistro(){
+
+    StRegistroServicio Aux;
+
+    printf("Ingrese el id del servicio: ");
+    scanf("%d",&Aux.IdServicio);
+    printf("Ingrese el nombre del servicio: ");
+    fflush(stdin);
+    gets(Aux.Servicio);
+    printf("Ingrese el nombre del subservicio: ");
+    fflush(stdin);
+    gets(Aux.SubServicio);
+    printf("Ingrese el costo del subservicio: ");
+    scanf("%f",&Aux.Precio);
+
+return Aux;
+}
+
+///FUNCION PARA CARGAR UN ARCHIVO
+
+void CargarUnArchivo(){
+
+    char control = 's';
+
+    FILE * archi = fopen(Arreglo,"ab");
+
+    if(archi!=NULL){
+        while(control == 's'){
+            StRegistroServicio Aux = CargarUnRegistro();
+            fwrite(&Aux,sizeof(StRegistroServicio),1,archi);
+            printf("Quiere seguir cargando datos?? ");
+            fflush(stdin);
+            scanf("%c",&control);
+        }
+
+        fclose(archi);
+    }else{
+        printf("El archivo se abrio incorrectamente\n");
+    }
 }
 
 

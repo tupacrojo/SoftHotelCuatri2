@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1699930623 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+
