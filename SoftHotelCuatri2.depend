@@ -1,8 +1,43 @@
 # depslib dependency file v1.0
-1699930623 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\main.c
+1700016272 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<conio.h>
 	<string.h>
+	"ArchivoServicios.h"
+	"ListasServicios.h"
+	"StCompuestaServicios.h"
+
+1700014768 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+
+1700014768 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.c
+	"ArchivoServicios.h"
+
+1700012764 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\listasservicios.c
+	"ListasServicios.h"
+
+1699999260 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\listasservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+
+1700002211 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\stcompuestaservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+	"ArchivoServicios.h"
+	"ListasServicios.h"
+
+1700014202 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\stcompuestaservicios.c
+	"StCompuestaServicios.h"
 
