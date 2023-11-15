@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <string.h>
+#include <time.h>
 
 char NOMBRE[] = {"caracteristicasDeLasHabitaciones"};
 
 typedef struct {
     int id;
     char caracteristicas[25];
+    int ocupado;
     int cantCamas;
     char tipoDeCama[13]; // simple, matrimonial o combinada
 }habitacion;
@@ -28,10 +30,12 @@ typedef struct {
 
 typedef struct {
     int id;
-    char caracteristicas[25];
+    int ocupado; ///1 si 0 no
+    char caracteristicas[25]; /// vista al mar, balcon, Espaciosa
     int cantCamas;
-    char tipoDeCama[13]; // simple, matrimonial o combinada
+    char tipoDeCama[13]; /// simple, matrimonial o combinada
     int idPiso;
+
 }archivo;
 
 ///                                     PROTOTIPADO
@@ -50,11 +54,14 @@ void  mostrarLista(NodoPiso * lista);
 void mostrarArrayCompleto (stDeCelda ARRAY[]);
 
 void iniciallizarTodo (stDeCelda ARRAY[]);
+int validacionDeString(char caracteristica[]);
+int validacionDeCamas(char caracteristica[]);
 
 
 
 
 
+/// MAIN
 
 int main()
 {
@@ -74,6 +81,7 @@ NodoPiso * crearNodo (archivo DATO){
     aux->DATOS.cantCamas = DATO.cantCamas;
     strcpy (aux->DATOS.caracteristicas , DATO.caracteristicas);
     aux->DATOS.id = DATO.id;
+    aux->DATOS.ocupado = DATO.ocupado;
     strcpy (aux->DATOS.tipoDeCama,DATO.tipoDeCama);
 
     aux->siguiente = NULL;
@@ -98,7 +106,7 @@ void CargarArray (stDeCelda ARRAY[]){
     iniciallizarTodo(ARRAY);
 
     while (fread(&aux,sizeof(archivo),1,archi)>0){
-       ARRAY[aux.idPiso-1] = insertar(ARRAY,aux,aux.idPiso-1);
+       ARRAY[aux.idPiso] = insertar(ARRAY,aux,aux.idPiso);
     }
 
     fclose(archi);
@@ -115,8 +123,6 @@ void iniciallizarTodo (stDeCelda ARRAY[]){
 
 
 stDeCelda insertar (stDeCelda array[], archivo aux,int posicion){
-
-
     if (array[posicion].lista == NULL){
         array[posicion].lista = crearNodo(aux);
     }else{
@@ -130,7 +136,7 @@ return array[posicion];
 
 
 void FuncionPrincipal (){
-    stDeCelda PISOS [12];
+    stDeCelda PISOS [13];
 
     FILE * archi ;
     //archi = fopen(NOMBRE,"ab");
@@ -156,12 +162,13 @@ void FuncionPrincipal (){
 
 void CargarArchi (FILE * archi){
     char seleccoin = 's';
+    int validacion=1;
 
     archivo aux;
 
     while (seleccoin != 'n'){
-        printf("\nid de la habitacion: ");
-        scanf ("%i", &aux.id);
+        srand(time(NULL));
+        aux.id = rand()%9999;
 
         printf("Piso: ");
         scanf ("%i", &aux.idPiso);
@@ -169,17 +176,28 @@ void CargarArchi (FILE * archi){
         printf("cantidad de camas: ");
         scanf ("%i", &aux.cantCamas);
 
+        aux.ocupado = 0;
+
         printf("caracteristicas: ");
-        fflush(stdin);
-        scanf ("%s", aux.caracteristicas);
+        do{
+            fflush(stdin);
+            gets(aux.caracteristicas);
+            validacion = validacionDeString(aux.caracteristicas);
+        }while (validacion !=1);
+
+
 
         printf("tipo de cama: ");
-        fflush(stdin);
-        scanf ("%s", aux.tipoDeCama);
-
+        do{
+            fflush(stdin);
+            scanf ("%s", aux.tipoDeCama);
+            validacion = validacionDeCamas(aux.tipoDeCama);
+        }while (validacion !=1);
         fwrite (&aux,sizeof(archivo),1,archi);
 
-        printf ("       desea seguir cargando datos?... ");
+
+
+        printf ("\n\n   desea seguir cargando datos?... ");
         fflush(stdin);
         scanf ("%c", &seleccoin);
     }
@@ -187,14 +205,16 @@ void CargarArchi (FILE * archi){
 
 void mostrar (FILE * archi){
     archivo aux;
+    int x = 1;
     while (fread (&aux,sizeof(archivo),1,archi)>0){
+        printf ("%i", x);
         printf("\nid: %i",aux.id);
         printf("\npiso: %i ",aux.idPiso);
         printf("\ncantidad de camas: %i ",aux.cantCamas);
         printf("\ntipo de cama: %s",aux.tipoDeCama);
         printf("\ncaracteristica especial: %s",aux.caracteristicas);
         printf("\n----------------------------");
-
+        x++;
 
     }
 }
@@ -207,7 +227,7 @@ void  mostrarLista(NodoPiso * lista){
         printf("\ncantidad de camas: %i ",lista->DATOS.cantCamas);
         printf("\ntipo de cama: %s",lista->DATOS.tipoDeCama);
         printf("\ncaracteristica especial: %s",lista->DATOS.caracteristicas);
-        printf("\n----------------------------");
+        printf("\n----------------------------\n");
         lista = lista->siguiente;
     }
 }
@@ -217,11 +237,11 @@ void  mostrarLista(NodoPiso * lista){
 void mostrarArrayCompleto (stDeCelda ARRAY[]){
     int i =0;
     printf("\nACA ENTRAMOS A MOSTRAR LAS LISTAASSSSS\n\n");
-    while (i < 12){
+    while (i < 13){
         if (ARRAY[i].lista == NULL){
-            printf ("el piso %i esta vacio\n", i+1);
+            printf ("el piso %i esta vacio\n", i);
         }else{
-             printf ("el piso %i\n\n", i+1);
+             printf ("el piso %i\n\n", i);
             mostrarLista(ARRAY[i].lista);
         }
         i++;
@@ -231,9 +251,42 @@ void mostrarArrayCompleto (stDeCelda ARRAY[]){
 
 
 
+int validacionDeString(char caracteristica[]){ /// caracteristicas
+    int x=0;
+    if (strcmp(caracteristica,"balcon")== 0){
+        x=1;
+    }else{
+        if (strcmp(caracteristica,"espaciosa")== 0){
+            x=1;
+        }else{
+            if(strcmp(caracteristica,"vista al mar")== 0){
+                x=1;
+            }else{
+                printf("esta mal...:");
+            }
+        }
+    }
+return x;
+}
 
 
-
+int validacionDeCamas(char caracteristica[]){ /// camas simple, matrimonial o combinada
+    int x=0;
+    if (strcmp(caracteristica,"simple")== 0){
+        x=1;
+    }else{
+        if (strcmp(caracteristica,"matrimonial")== 0){
+            x=1;
+        }else{
+            if(strcmp(caracteristica,"combinada")== 0){
+                x=1;
+            }else{
+                printf("esta mal...:");
+            }
+        }
+    }
+return x;
+}
 
 
 
