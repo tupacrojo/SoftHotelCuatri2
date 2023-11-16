@@ -136,14 +136,14 @@ return array[posicion];
 
 
 void FuncionPrincipal (){
-    stDeCelda PISOS [13];
+    stDeCelda PISOS [14];
 
     FILE * archi ;
     //archi = fopen(NOMBRE,"ab");
 
     //CargarArchi(archi);
 
-    //fclose(archi);
+   // fclose(archi);
 
     archi = fopen(NOMBRE,"rb");
 
@@ -236,8 +236,8 @@ void  mostrarLista(NodoPiso * lista){
 
 void mostrarArrayCompleto (stDeCelda ARRAY[]){
     int i =0;
-    printf("\nACA ENTRAMOS A MOSTRAR LAS LISTAASSSSS\n\n");
-    while (i < 13){
+    printf("\n      ACA ENTRAMOS A MOSTRAR LAS LISTAASSSSS\n\n");
+    while (i < 14){
         if (ARRAY[i].lista == NULL){
             printf ("el piso %i esta vacio\n", i);
         }else{
