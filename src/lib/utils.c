@@ -77,7 +77,7 @@ void atras(char texto[])
 
 
 int encontrarDireccionEscritorio(char ruta[])/*** "ruta[]" recibe una cadena de caracteres vacia y le carga la direccion de escritorio "C:\Users\Tupac\Desktop"
-Se usa la macro "SUCCEEDED" esta devuelve "true" o "false", dependiendo de la funcion "SHGetFolderPathA"
+Se usa la macro "SUCCEEDED" esta devuelve "0" o "-1", dependiendo de la funcion "SHGetFolderPathA"
 "SHGetFolderPathA" :
 El primer parámetro de SHGetFolderPathA es un identificador de la carpeta especial que se desea obtener. En este caso, se utiliza CSIDL_DESKTOPDIRECTORY, que representa el identificador para el directorio del escritorio.
 El segundo parámetro es un puntero a una estructura de identificador de seguridad (security identifier, SID). Pasar NULL indica que no se necesita una SID.
@@ -89,6 +89,7 @@ El quinto parámetro es la cadena donde se almacena el resultado
     int flag = -1;
     if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_DESKTOPDIRECTORY, NULL, 0, ruta)))
     {
+        printf("%s",ruta);
         flag = 0;
     }
     return flag;

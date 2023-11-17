@@ -37,8 +37,7 @@ stUsuario agregarUsuarioPorParametro(int id, int tipo, char nombre[], char apell
 /** \fn void agregarUsuarioArchivo()
  * \brief Abre el archivo al final y pide al usuario cargar los datos de la estructura stUsuario en el archivo.
  */
-void agregarUsuarioArchivo()
-{
+void agregarUsuarioArchivo(){
     FILE *archi = fopen(aUsuarios, "ab");
     stUsuario u;
     agregarUsuario(&u);
@@ -94,12 +93,13 @@ float extraerConsumoUsuario(int id)
     }
 }
 
-
+///*
+/*
 void agregarConsumoConsumible(stUsuario u, stConsumibles c)
 {
     cambiarConsumoUsuario(u.id, c.precio);
 }
-
+*/
 
 /** \fn int obtenerUltimoIdUsuario()
  * \brief Accede al archivo, obtine el ultimo id usuario y lo retorna
@@ -813,8 +813,8 @@ int obtenerTipoUsuario(int id)
     }
 }
 
-/** \fn float extraerUsuario (int id)
- * \brief Obtiene una estructura usuario almacenada en el archivo
+/** \fn stUsuario extraerUsuario (int id)
+ * \brief Obtiene una estructura usuario almacenada en el archivo, buscando por id
  * \param id valor con el que se busca al usuario a obtener
  * \return Devuelve la estructura de usuario
  */
@@ -963,19 +963,6 @@ void borraDatosUsuario(stUsuario *u)
     }
 }
 
-void mostrarReserva(stUsuario u)
-{
-    puts("------------------------------------------------");
-    printf(" ID: %i | Nombre: %s | Apellido: %s | DNI: %s\n", u.id, u.nombre, u.apellido, u.DNI);
-    printf(" D%ca de Entrada     : %i\n", 161, u.reserva.diaEntrada);
-    printf(" Mes de Entrada     : %i\n", u.reserva.mesEntrada);
-    printf(" A%co de Entrada     : %i\n", 164, u.reserva.anioEntrada);
-    printf(" D%ca de Salida      : %i\n", 161, u.reserva.diaSalida);
-    printf(" Mes de Sal%cda      : %i\n", 161, u.reserva.mesSalida);
-    printf(" A%co de Salida      : %i\n", 164, u.reserva.anioSalida);
-    printf(" Tipo de Habitaci%cn : %s\n", 162, u.reserva.habitacion.tipo);
-    puts("------------------------------------------------");
-}
 
 void mostrarReservaEnArchivo() // muestra todos los tipos
 {
@@ -994,7 +981,7 @@ void mostrarReservaEnArchivo() // muestra todos los tipos
             fread(&aux, sizeof(stUsuario), 1, archi);
             if (!feof(archi) && (strcmp(aux.reserva.habitacion.tipo, vacio.habitacion.tipo) > 0))
             {
-                mostrarReserva(aux);
+                mostrarReserva(aux.reserva);
                 Sleep(500);
             }
         }

@@ -15,7 +15,7 @@ void borraDatosReserva(stReserva *r)
     r->mesSalida = 0;
     r->habitacion.estado = 0;
     r->habitacion.piso = 0;
-    memset(r->habitacion.caracteristicas, 0, 10);
+    strcpy(r->habitacion.tipo, "");
 }
 
 /** \fn int esFechaValida(int dia, int mes, int anio)
@@ -149,5 +149,121 @@ int esFechaPosteriorA(int diaAn, int mesAn, int anioAn, int diaPos, int mesPos, 
     else
     {
         return -1;
+    }
+}
+
+/**
+ *\fn nodoLD *inicListaDoble()
+ *\brief inicia lista doble
+ *\return NULL
+*/
+nodoLD *inicListaDoble()
+{
+    return NULL;
+}
+
+/**
+ * \fn nodoLD* crearNodo(stReserva dato)
+ * \param dato estrucutra con datos cargados
+ * \brief recibe un dato de tipo reserva para almacenarlo en la lista doble y poner sus ramas en NULL
+ * \return retorna el nodo creado con la informacion
+*/
+// Función para crear un nuevo nodo
+nodoLD* crearNodo(stReserva dato)
+{
+    nodoLD* nuevoNodo = (nodoLD*)malloc(sizeof(nodoLD));
+    nuevoNodo->reserva = dato;
+    nuevoNodo->sig = NULL;
+    nuevoNodo->ant = NULL;
+    return nuevoNodo;
+}
+
+// Función para insertar un nodo al principio de la lista
+nodoLD* insertarAlPrincipio(nodoLD* lista, stReserva dato)
+{
+    nodoLD* nuevoNodo = crearNodo(dato);
+    nuevoNodo->sig = lista;
+    if (lista)
+    {
+        lista->ant = nuevoNodo;
+    }
+    lista = nuevoNodo;
+    return lista;
+}
+
+// Función para insertar un nodo al final de la lista
+nodoLD *insertarAlFinal(nodoLD* lista, stReserva dato)
+{
+    nodoLD* nuevoNodo = crearNodo(dato);
+    nodoLD* ultimo = lista;
+    if (lista == NULL)
+    {
+        lista = nuevoNodo;
+        return lista;
+    }
+    while (ultimo->sig != NULL)
+    {
+        ultimo = ultimo->sig;
+    }
+    ultimo->sig = nuevoNodo;
+    nuevoNodo->ant = ultimo;
+    return lista;
+}
+
+#include "usuario.h"
+nodoLD *cargarListaDobleArchivo(nodoLD * lista, char archivo[])
+{
+    if(existeArchivo(archivo) == 0)
+    {
+        FILE * archi = fopen(archivo, "rb");
+        stUsuario aux;
+        while (fread(&aux,sizeof(stUsuario),1,archi) > 0)
+        {
+            if(esFechaPosterior(aux.reserva.diaEntrada,aux.reserva.mesEntrada,aux.reserva.anioEntrada)==0)
+            {
+                lista = insertarAlPrincipio(lista,aux.reserva);
+            }
+        }
+
+    }
+    return lista;
+}
+
+void mostrarReserva(stReserva r)
+{
+    puts("------------------------------------------------");
+    printf(" D%ca de Entrada                : %i\n", 161, r.diaEntrada);
+    printf(" Mes de Entrada                : %i\n", r.mesEntrada);
+    printf(" A%co de Entrada                : %i\n", 164, r.anioEntrada);
+    printf(" D%ca de Salida                 : %i\n", 161, r.diaSalida);
+    printf(" Mes de Sal%cda                 : %i\n", 161, r.mesSalida);
+    printf(" A%co de Salida                 : %i\n", 164, r.anioSalida);
+    printf(" Caracteristicas de Habitaci%cn : %s\n", 162,r.habitacion.tipo);
+    puts("------------------------------------------------");
+}
+
+// Función para imprimir la lista desde el principio
+void imprimirDesdePrincipio(nodoLD* lista)
+{
+    while (lista != NULL)
+    {
+        mostrarReserva(lista->reserva);
+        lista = lista->sig;
+    }
+}
+
+// Función para imprimir la lista desde el final
+void imprimirDesdeFinal(nodoLD* lista)
+{
+    nodoLD* ultimo = inicListaDoble();
+    while (lista)
+    {
+        ultimo = lista;
+        lista = lista->sig;
+    }
+    while (ultimo)
+    {
+        mostrarReserva(ultimo->reserva);
+        ultimo = ultimo->ant;
     }
 }

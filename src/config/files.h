@@ -6,7 +6,7 @@
 #include <windows.h>
 #include <shlobj.h>
 
-#define aUsuarios "data/usuarios.bin"
+#define aUsuarios "usuarios.bin"
 #define aHabitaciones "data/habitaciones.bin"
 #define aConsumibles "data/consumibles.bin"
 

@@ -1,8 +1,9 @@
 #pragma once
+
+#include <stdlib.h>
 #include <stdio.h>
 #include "../config/files.h"
 #include "reserva.h"
-#include "consumible.h"
 
 typedef struct /// "stUsuario" usuario
 {
@@ -26,20 +27,16 @@ typedef struct /// "stUsuario" usuario
 void cambiarBorradoReserva(int id);
 int borrarReserva(char documento[]);
 int crearReserva(int id);
-void mostrarReserva(stUsuario u);
+void mostrarReserva(stReserva r);
 void mostrarReservaEnArchivo();
 
 
-void agregarConsumoConsumible(stUsuario u, stConsumibles c);
+/// void agregarConsumoConsumible(stUsuario u, stConsumibles c);
 void agregarUsuario(stUsuario *u);
 stUsuario agregarUsuarioPorParametro(int id, int tipo, char nombre[], char apellido[], char dni[], char contrasena[], int edad, char telefono[], char genero, int hijos, char estadoCivil[]);
 void agregarUsuarioArchivo();
 void agregarUsuarioArchivo2(stUsuario u);
 float extraerConsumoUsuario(int id);
-void agregarUsuario(stUsuario *u);
-stUsuario agregarUsuarioPorParametro(int id, int tipo, char nombre[], char apellido[], char dni[], char contrasena[], int edad, char telefono[], char genero, int hijos, char estadoCivil[]);
-void agregarUsuarioArchivo();
-void agregarUsuarioArchivo2(stUsuario u);
 int buscarUsuarioDocumento(char documento[]);
 int buscarUsuarioCelular(char celular[]);
 
