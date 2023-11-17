@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1699983225 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.c
+1700230740 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.c
 	"utils.h"
 
 1699881288 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.h
@@ -10,25 +10,25 @@
 	<shlobj.h>
 	"../config/files.h"
 
-1699887586 c:\users\tupac\documents\github\softhotelcuatri2\src\config\files.h
+1700230740 c:\users\tupac\documents\github\softhotelcuatri2\src\config\files.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<windows.h>
 	<shlobj.h>
 
-1699881288 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\habitacion.c
+1700230740 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\habitacion.c
 	"habitacion.h"
 
-1699885758 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\habitacion.h
+1700232376 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\habitacion.h
 	<stdio.h>
 	"../config/files.h"
 
-1699981346 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\reserva.c
+1700230740 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\reserva.c
 	"reserva.h"
 	"usuario.h"
 
-1699886897 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\reserva.h
+1700230740 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\reserva.h
 	<stdio.h>
 	<time.h>
 	"../config/files.h"
@@ -42,12 +42,22 @@
 	"src/lib/utils.h"
 	"src/lib/usuario.h"
 
-1699886886 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\usuario.h
+1700230740 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\usuario.h
 	<stdlib.h>
 	<stdio.h>
 	"../config/files.h"
 	"reserva.h"
 
-1699981570 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\usuario.c
+1700230740 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\usuario.c
 	"usuario.h"
+
+1700231753 source:c:\users\tupac\documents\github\softhotelcuatri2\src\utils\array\array.c
+	"array.h"
+
+1700231759 c:\users\tupac\documents\github\softhotelcuatri2\src\utils\array\array.h
+
+1700231763 source:c:\users\tupac\documents\github\softhotelcuatri2\src\utils\avisos\avisos.c
+	"avisos.h"
+
+1700231767 c:\users\tupac\documents\github\softhotelcuatri2\src\utils\avisos\avisos.h
 

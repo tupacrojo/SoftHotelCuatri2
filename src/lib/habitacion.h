@@ -2,14 +2,28 @@
 #include <stdio.h>
 #include "../config/files.h"
 
-typedef struct ///  "stRegHabitacion" habitacion
+/// ESTRUCTURA DE CARACTERISTICAS
+
+typedef struct
 {
     int id;
     int borrado;
-    int estado;  // 0 libre; 1 Ocupado;
-    int piso;   // pisos
-    char tipo[8];// este arreglo puede almacenar
-}stRegHabitacion;
+    char tipo[30];
+
+} stRegCaracteristicas;
+
+/// ESTRUCTURA DE HABITACIONES
+
+typedef struct
+{
+
+    int id;
+    int borrado;
+    int estado;
+    int piso;
+    stRegCaracteristicas caracteristicas[10];
+} stRegHabitacion;
+
 
 int obtenerUltimoIdHabitaciones();
 stRegHabitacion extraerHabitacion(int id);

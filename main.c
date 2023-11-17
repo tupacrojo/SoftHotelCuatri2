@@ -11,30 +11,8 @@
 #include "ArchivoServicios.h"
 #include "ListasServicios.h"
 #include "StCompuestaServicios.h"
+#include "src/lib/habitacion.h"
 
-/// ESTRUCTURA DE CARACTERISTICAS
-
-typedef struct
-{
-
-    int id;
-    int borrado;
-    char tipo[30];
-
-} stRegCaracteristicas;
-
-/// ESTRUCTURA DE HABITACIONES
-
-typedef struct
-{
-
-    int id;
-    int borrado;
-    int estado;
-    int piso;
-    stRegCaracteristicas caracteristicas[10];
-
-} stRegHabitacion;
 
 /// ESTRUCTURA DE LA RESERVA
 
