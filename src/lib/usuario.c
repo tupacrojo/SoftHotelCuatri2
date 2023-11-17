@@ -813,8 +813,8 @@ int obtenerTipoUsuario(int id)
     }
 }
 
-/** \fn float extraerUsuario (int id)
- * \brief Obtiene una estructura usuario almacenada en el archivo
+/** \fn stUsuario extraerUsuario (int id)
+ * \brief Obtiene una estructura usuario almacenada en el archivo, buscando por id
  * \param id valor con el que se busca al usuario a obtener
  * \return Devuelve la estructura de usuario
  */

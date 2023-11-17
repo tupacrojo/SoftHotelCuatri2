@@ -152,11 +152,22 @@ int esFechaPosteriorA(int diaAn, int mesAn, int anioAn, int diaPos, int mesPos, 
     }
 }
 
+/**
+ *\fn nodoLD *inicListaDoble()
+ *\brief inicia lista doble
+ *\return NULL
+*/
 nodoLD *inicListaDoble()
 {
     return NULL;
 }
 
+/**
+ * \fn nodoLD* crearNodo(stReserva dato)
+ * \param dato estrucutra con datos cargados
+ * \brief recibe un dato de tipo reserva para almacenarlo en la lista doble y poner sus ramas en NULL
+ * \return retorna el nodo creado con la informacion
+*/
 // Función para crear un nuevo nodo
 nodoLD* crearNodo(stReserva dato)
 {
@@ -221,16 +232,15 @@ nodoLD *cargarListaDobleArchivo(nodoLD * lista, char archivo[])
 void mostrarReserva(stReserva r)
 {
     puts("------------------------------------------------");
-    printf(" D%ca de Entrada     : %i\n", 161, r.diaEntrada);
-    printf(" Mes de Entrada     : %i\n", r.mesEntrada);
-    printf(" A%co de Entrada     : %i\n", 164, r.anioEntrada);
-    printf(" D%ca de Salida      : %i\n", 161, r.diaSalida);
-    printf(" Mes de Sal%cda      : %i\n", 161, r.mesSalida);
-    printf(" A%co de Salida      : %i\n", 164, r.anioSalida);
+    printf(" D%ca de Entrada                : %i\n", 161, r.diaEntrada);
+    printf(" Mes de Entrada                : %i\n", r.mesEntrada);
+    printf(" A%co de Entrada                : %i\n", 164, r.anioEntrada);
+    printf(" D%ca de Salida                 : %i\n", 161, r.diaSalida);
+    printf(" Mes de Sal%cda                 : %i\n", 161, r.mesSalida);
+    printf(" A%co de Salida                 : %i\n", 164, r.anioSalida);
     printf(" Caracteristicas de Habitaci%cn : %s\n", 162,r.habitacion.tipo);
     puts("------------------------------------------------");
 }
-
 
 // Función para imprimir la lista desde el principio
 void imprimirDesdePrincipio(nodoLD* lista)

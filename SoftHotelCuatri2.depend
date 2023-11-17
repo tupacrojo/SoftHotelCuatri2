@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1699881288 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.c
+1699983225 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.c
 	"utils.h"
 
 1699881288 c:\users\tupac\documents\github\softhotelcuatri2\src\lib\utils.h
@@ -24,7 +24,7 @@
 	<stdio.h>
 	"../config/files.h"
 
-1699888172 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\reserva.c
+1699981346 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\reserva.c
 	"reserva.h"
 	"usuario.h"
 
@@ -34,7 +34,7 @@
 	"../config/files.h"
 	"habitacion.h"
 
-1699887968 source:c:\users\tupac\documents\github\softhotelcuatri2\main.c
+1699983304 source:c:\users\tupac\documents\github\softhotelcuatri2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -48,6 +48,6 @@
 	"../config/files.h"
 	"reserva.h"
 
-1699887572 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\usuario.c
+1699981570 source:c:\users\tupac\documents\github\softhotelcuatri2\src\lib\usuario.c
 	"usuario.h"
 
