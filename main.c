@@ -146,10 +146,6 @@ stHabitacion dato;
 int main()
 {
     int arregloDePisos[15] =cargarArregloDePisos();
-
-
-{
-
     int validos =0;
     celdaEvento eventos[11];
     //cargarArchivo();
@@ -202,21 +198,34 @@ void MenuServicios(){
     switch(op){
 
         case 1:
+        {
             Funcion1(lista);
             break;
+        }
         case 2:
+        {
             Funcion2(lista);
             break;
+        }
         case 3:
+        {
             Funcion3(lista);
             break;
+        }
         case 4:
+        {
             break;
+        }
         case 5:
+        {
             MenuSubServicio();
             break;
+        }
         default:
+        {
+
             break;
+        }
     }
 }
 
