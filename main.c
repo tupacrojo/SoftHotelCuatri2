@@ -1,4 +1,4 @@
-///LIBRERIAS DE CODEBLOCKS
+/// LIBRERIAS DE CODEBLOCKS
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,25 +6,27 @@
 #include <conio.h>
 #include <string.h>
 
-///LIBRERIAS PARA LISTA DE LISTAS
+/// LIBRERIAS PARA LISTA DE LISTAS
 
 #include "ArchivoServicios.h"
 #include "ListasServicios.h"
 #include "StCompuestaServicios.h"
 
-///ESTRUCTURA DE CARACTERISTICAS
+/// ESTRUCTURA DE CARACTERISTICAS
 
-typedef struct{
+typedef struct
+{
 
     int id;
     int borrado;
     char tipo[30];
 
-}stRegCaracteristicas;
+} stRegCaracteristicas;
 
-///ESTRUCTURA DE HABITACIONES
+/// ESTRUCTURA DE HABITACIONES
 
-typedef struct{
+typedef struct
+{
 
     int id;
     int borrado;
@@ -32,11 +34,12 @@ typedef struct{
     int piso;
     stRegCaracteristicas caracteristicas[10];
 
-}stRegHabitacion;
+} stRegHabitacion;
 
-///ESTRUCTURA DE LA RESERVA
+/// ESTRUCTURA DE LA RESERVA
 
-typedef struct{
+typedef struct
+{
 
     stRegHabitacion habitacion;
     int borrado;
@@ -49,14 +52,15 @@ typedef struct{
     int mesSalida;
     int anioSalida;
 
-}stReserva;
+} stReserva;
 
-///ESTRUCTURA DE USUARIO
+/// ESTRUCTURA DE USUARIO
 
-typedef struct{
+typedef struct
+{
 
     int id;
-    int borrado; ///PREGUNTAR
+    int borrado; /// PREGUNTAR
     int tipo;
     char contrasena[20];
     char nombre[50];
@@ -70,25 +74,24 @@ typedef struct{
     int hijos;
     char estadoCivil[20];
 
-}stUsuario;
+} stUsuario;
 
-///FUNCIONES DE MENU
+/// FUNCIONES DE MENU
 
 void Menu();
 void MenuServicios();
 void MenuSubServicio();
 void MenuServAdicional();
 
-///FUNCIONES
+/// FUNCIONES
 
-void Funcion1(NodoP*lista);
-void Funcion2(NodoP*lista);
-void Funcion3(NodoP*lista);
+void Funcion1(NodoP *lista);
+void Funcion2(NodoP *lista);
+void Funcion3(NodoP *lista);
 #include <string.h>
 #include "src/lib/reserva.h"
 #include "src/lib/utils.h"
 #include "src/lib/usuario.h"
-
 
 /** \fn void registro()
  * \brief Si ninguno de los tres archivos esta creado, los crea y los rellena con datos iniciales
@@ -109,7 +112,8 @@ void registro()
     }
 }
 
-void crearBackupEscritorio(){
+void crearBackupEscritorio()
+{
     char rutaEscritorio[1000];
     if (encontrarDireccionEscritorio(rutaEscritorio) == 0)
     {
@@ -120,51 +124,52 @@ void crearBackupEscritorio(){
 #include <string.h>
 #include "evento.h"
 
-
-
-typedef struct {
-int piso;
-int cantidadHabitaciones;
-int idHabitacion;
-int cantidadHuesped;
-int ocupado;
-int habilitada;
-}pisoRegistro;
-
-typedef struct {
+typedef struct
+{
+    int piso;
+    int cantidadHabitaciones;
     int idHabitacion;
     int cantidadHuesped;
     int ocupado;
     int habilitada;
-}stHabitacion;
+} pisoRegistro;
 
-typedef struct nodoListaHabitacion {
-struct nodoListaHabitacion * sig;
-stHabitacion dato;
-}nodoListaHabitacion;
+typedef struct
+{
+    int idHabitacion;
+    int cantidadHuesped;
+    int ocupado;
+    int habilitada;
+} stHabitacion;
+
+typedef struct nodoListaHabitacion
+{
+    struct nodoListaHabitacion *sig;
+    stHabitacion dato;
+} nodoListaHabitacion;
 
 int main()
 {
-    int arregloDePisos[15] =cargarArregloDePisos();
-    int validos =0;
+    int arregloDePisos[15] = cargarArregloDePisos();
+    int validos = 0;
     celdaEvento eventos[11];
-    //cargarArchivo();
+    // cargarArchivo();
 
     /// FUNCION PARA CARGAR EL ARREGLO:
-    validos = pasarDatosDeArchivoAarregloEventos(eventos,11,validos);
+    validos = pasarDatosDeArchivoAarregloEventos(eventos, 11, validos);
     /// FUNCION PARA MOSTRAR EL ARREGLO COMPLETO:
-    mostrarMesyDias(eventos,validos);
+    mostrarMesyDias(eventos, validos);
     /// FUNCION PARA VER LOS EVENTOS DE UN MES:
-    funcionVerEventosMes(eventos,validos);
-    ///FUNCION PARA BUSCAR SI UNA FECHA ESTA DISPONIBLE PARA UN EVENTO:
-    funcionBuscarFechaDispo(eventos,validos);
+    funcionVerEventosMes(eventos, validos);
+    /// FUNCION PARA BUSCAR SI UNA FECHA ESTA DISPONIBLE PARA UN EVENTO:
+    funcionBuscarFechaDispo(eventos, validos);
     /// FUNCION PARA SUMAR LA CANTIDAD DE EVENTOS DE UN MES:
-   funcionSumarCantEventosMes(eventos,validos);
+    funcionSumarCantEventosMes(eventos, validos);
     /// FUNCION PARA VER LAS GANANCIAS DE UN MES:
-   funcionSumarGananciasMes(eventos,validos);
- /* /// FUNCION PARA BORRAR UN EVENTO DE UN MES:
-   funcionBorrarEvento(eventos,validos);
-*/
+    funcionSumarGananciasMes(eventos, validos);
+    /* /// FUNCION PARA BORRAR UN EVENTO DE UN MES:
+      funcionBorrarEvento(eventos,validos);
+   */
     /*
     //existeArchivo(aUsuarios);
     nodoLD *lista = inicListaDoble();
@@ -181,92 +186,96 @@ int main()
     return 0;
 }
 
-///FUNCIONES PARA EL MENU DE SERVICIOS
+/// FUNCIONES PARA EL MENU DE SERVICIOS
 
-void MenuServicios(){
+void MenuServicios()
+{
 
     int op;
 
-    NodoP*lista = InicListaPrincipal();
+    NodoP *lista = InicListaPrincipal();
     lista = CargarListaServicioConArchivo(lista);
 
     Menu();
     printf("\nIngrese una opcion: ");
-    scanf("%d",&op);
+    scanf("%d", &op);
     Pause();
 
-    switch(op){
+    switch (op)
+    {
 
-        case 1:
-        {
-            Funcion1(lista);
-            break;
-        }
-        case 2:
-        {
-            Funcion2(lista);
-            break;
-        }
-        case 3:
-        {
-            Funcion3(lista);
-            break;
-        }
-        case 4:
-        {
-            break;
-        }
-        case 5:
-        {
-            MenuSubServicio();
-            break;
-        }
-        default:
-        {
+    case 1:
+    {
+        Funcion1(lista);
+        break;
+    }
+    case 2:
+    {
+        Funcion2(lista);
+        break;
+    }
+    case 3:
+    {
+        Funcion3(lista);
+        break;
+    }
+    case 4:
+    {
+        break;
+    }
+    case 5:
+    {
+        MenuSubServicio();
+        break;
+    }
+    default:
+    {
 
-            break;
-        }
+        break;
+    }
     }
 }
 
-void Menu(){
+void Menu()
+{
 
     printf("1. Visualizar todos los servicios\n");
     printf("2. Cargar un nuevo servicio\n");
     printf("3. Borrar un servicio\n");
     printf("4. Modificar un servicio por valor unitario\n");
     printf("5. Menu de servicios adicionales\n");
-
 }
 
-///FUNCION 1
+/// FUNCION 1
 
-void Funcion1(NodoP*lista){
+void Funcion1(NodoP *lista)
+{
 
     MostrarListaServicio(lista);
 }
 
-///FUNCION 2
+/// FUNCION 2
 
-void Funcion2(NodoP*lista){
+void Funcion2(NodoP *lista)
+{
 
     lista = CargarDatoListaServicios(lista);
     Pause();
     MostrarListaServicio(lista);
 }
 
-///FUNCION 3
+/// FUNCION 3
 
-void Funcion3(NodoP*lista){
+void Funcion3(NodoP *lista)
+{
 
     char Servicio[25];
 
     printf("Ingrese un servicio a borrar: ");
     fflush(stdin);
     gets(Servicio);
-    lista = BorrarUnDatoServicio(lista,Servicio);
+    lista = BorrarUnDatoServicio(lista, Servicio);
     MostrarListaServicio(lista);
-
 }
 /**
 ///FUNCION 4
@@ -279,42 +288,41 @@ void Funcion4(NodoP*lista){
 
 }
 **/
-///FUNCION 5
+/// FUNCION 5
 
-void MenuSubServicio(){
+void MenuSubServicio()
+{
 
     int op;
 
     MenuServAdicional();
     printf("\nIngrese una opcion: ");
-    scanf("%d",&op);
+    scanf("%d", &op);
     Pause();
 
-    switch(op){
+    switch (op)
+    {
 
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        default:
-            break;
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        break;
+    default:
+        break;
     }
 }
 
-///FUNCION MENU SUBSERVICIO
+/// FUNCION MENU SUBSERVICIO
 
-void MenuServAdicional(){
+void MenuServAdicional()
+{
 
     printf("1. Visualizar todos los servicios adicionales\n");
     printf("2. Cargar un nuevo servicio adicional\n");
     printf("3. Borrar un servicio adicional\n");
     printf("4. Modificar un servicio adicional por valor unitario\n");
-
 }
-
-
-

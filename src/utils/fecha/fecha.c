@@ -8,7 +8,7 @@
 #include "../../config/mensajes.h"
 
 char *meses[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
-                    "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+                 "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
 
 void leerFecha(struct tm *fecha)
 {
@@ -26,7 +26,8 @@ void leerFecha(struct tm *fecha)
     asignarFecha(fecha, dia, mes, anio);
 }
 
-void stringToFecha(char* fechaString, struct tm *fecha) {
+void stringToFecha(char *fechaString, struct tm *fecha)
+{
     int dia, mes, anio;
 
     sscanf(fechaString, "%d/%d/%d", &dia, &mes, &anio);

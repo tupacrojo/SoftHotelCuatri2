@@ -1,6 +1,6 @@
-#pragma once 
+#pragma once
 
-#include "stdbool.h";
+#include "stdbool.h"
 
 void leerString(char *string, bool soloLetras);
 bool validarTamanioString(int mayorA, char *string);

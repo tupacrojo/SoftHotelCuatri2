@@ -1,7 +1,7 @@
 #ifndef ARCHIVOSERVICIOS_H_INCLUDED
 #define ARCHIVOSERVICIOS_H_INCLUDED
 
-///LIBRERIAS NECESARIAS
+/// LIBRERIAS NECESARIAS
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,9 +9,10 @@
 #include <conio.h>
 #include <string.h>
 
-///ESTRUCTURA DE REGISTRO DE SERVICIOS
+/// ESTRUCTURA DE REGISTRO DE SERVICIOS
 
-typedef struct{
+typedef struct
+{
 
     int Piso;
     int borrado;
@@ -20,16 +21,16 @@ typedef struct{
     char SubServicio[25];
     float Precio;
 
-}StRegistroServicio;
+} StRegistroServicio;
 
-///PROTOTIPADO
+/// PROTOTIPADO
 
-///FUNCIONES PARA EL ARCHIVO
+/// FUNCIONES PARA EL ARCHIVO
 
 void CargarUnArchivo();
 void CargarUnRegistroArchivo(StRegistroServicio Aux);
 void MostrarUnArchivo();
-void DarAltaServicio(int pos,StRegistroServicio Dato);
+void DarAltaServicio(int pos, StRegistroServicio Dato);
 void CargarServicioNuevo(StRegistroServicio Aux);
 void MostrarUnRegistro(StRegistroServicio Aux);
 void BorrarUnRegistroArchivo(char Servicio[]);
