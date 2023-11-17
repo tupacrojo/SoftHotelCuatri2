@@ -29,7 +29,7 @@ void crearBackupEscritorio(){
     char rutaEscritorio[1000];
     if (encontrarDireccionEscritorio(rutaEscritorio) == 0)
     {
-        strcat(rutaEscritorio, "\backup\usuarios.bin");
+        strcat(rutaEscritorio, "\\backup\\usuarios.bin");
         backupArchivos(aUsuarios, rutaEscritorio);
     }
 }
@@ -61,7 +61,6 @@ int main()
  /* /// FUNCION PARA BORRAR UN EVENTO DE UN MES:
    funcionBorrarEvento(eventos,validos);
 */
-{
     /*
     //existeArchivo(aUsuarios);
     nodoLD *lista = inicListaDoble();
