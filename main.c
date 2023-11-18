@@ -5,6 +5,7 @@
 #include <time.h>
 
 char NOMBRE[] = {"caracteristicasDeLasHabitaciones"};
+char PRECIOS[] = {"PreciosAbitacion"};
 
 typedef struct {
     int id;
@@ -38,6 +39,14 @@ typedef struct {
 
 }archivo;
 
+typedef struct {
+    char caracteristica[25];
+    char tipoCama[13];
+    int precio;
+}ArchivoPrecios;
+
+
+
 ///                                     PROTOTIPADO
 
 NodoPiso * iniclista ();
@@ -56,6 +65,12 @@ void mostrarArrayCompleto (stDeCelda ARRAY[]);
 void iniciallizarTodo (stDeCelda ARRAY[]);
 int validacionDeString(char caracteristica[]);
 int validacionDeCamas(char caracteristica[]);
+void CargarArchiPrecios (FILE * archi);
+void funcion2();
+ArchivoPrecios insertarPrecio (ArchivoPrecios ARRAY[], ArchivoPrecios aux, int posicion);
+void CargarArrayPecios (ArchivoPrecios ARRAY[]);
+
+
 
 
 
@@ -66,6 +81,8 @@ int validacionDeCamas(char caracteristica[]);
 int main()
 {
      FuncionPrincipal ();
+
+
 
     return 0;
 }
@@ -115,7 +132,7 @@ void CargarArray (stDeCelda ARRAY[]){
 void iniciallizarTodo (stDeCelda ARRAY[]){
     int x = 0;
 
-    while (x < 12){
+    while (x < 13){
         ARRAY[x].lista = iniclista();
         x++;
     }
@@ -138,6 +155,7 @@ return array[posicion];
 void FuncionPrincipal (){
     stDeCelda PISOS [14];
 
+
     FILE * archi ;
     //archi = fopen(NOMBRE,"ab");
 
@@ -145,13 +163,18 @@ void FuncionPrincipal (){
 
    // fclose(archi);
 
-    archi = fopen(NOMBRE,"rb");
+    //archi = fopen(NOMBRE,"rb");
 
-    mostrar (archi);
+    //mostrar (archi);
 
     CargarArray(PISOS);
 
     mostrarArrayCompleto(PISOS);
+
+    funcion2();
+
+
+
 
 
 
@@ -237,7 +260,7 @@ void  mostrarLista(NodoPiso * lista){
 void mostrarArrayCompleto (stDeCelda ARRAY[]){
     int i =0;
     printf("\n      ACA ENTRAMOS A MOSTRAR LAS LISTAASSSSS\n\n");
-    while (i < 14){
+    while (i < 13){
         if (ARRAY[i].lista == NULL){
             printf ("el piso %i esta vacio\n", i);
         }else{
@@ -287,6 +310,77 @@ int validacionDeCamas(char caracteristica[]){ /// camas simple, matrimonial o co
     }
 return x;
 }
+
+
+
+void funcion2(){
+    FILE * archi = fopen (PRECIOS,"ab");
+
+    CargarArchiPrecios(archi);
+
+    fclose(archi);
+}
+
+void CargarArchiPrecios (FILE * archi){ /// CARGAMOS LOS PRECIOS DE LAS HABITACIONES
+    char seleccoin = 's';
+    int validacion=1;
+
+    ArchivoPrecios aux;
+
+    while (seleccoin != 'n'){
+        printf("caracteristicas: ");
+        do{
+            fflush(stdin);
+            gets(aux.caracteristica);
+            validacion = validacionDeString(aux.caracteristica);
+        }while (validacion !=1);
+
+
+
+        printf("tipo de cama: ");
+        do{
+            fflush(stdin);
+            scanf ("%s", aux.tipoCama);
+            validacion = validacionDeCamas(aux.tipoCama);
+        }while (validacion !=1);
+
+        printf("ingresar precio:");
+        scanf("%i", &aux.precio);
+
+        fwrite (&aux,sizeof(ArchivoPrecios),1,archi);
+
+        printf ("\n\n   desea seguir cargando datos?... ");
+        fflush(stdin);
+        scanf ("%c", &seleccoin);
+    }
+}
+
+void CargarArrayPecios (ArchivoPrecios ARRAY[]){
+    FILE * archi = fopen (PRECIOS,"rb");
+    ArchivoPrecios aux;
+    int x=0;
+
+    while (fread(&aux,sizeof(ArchivoPrecios),1,archi)>0){
+       ARRAY[x] = insertarPrecio(ARRAY,aux,x);
+    }
+
+    fclose(archi);
+}
+
+ArchivoPrecios insertarPrecio (ArchivoPrecios ARRAY[], ArchivoPrecios aux, int posicion){
+    ARRAY[posicion].precio = aux.precio;
+    strcpy(ARRAY[posicion].caracteristica, aux.caracteristica);
+    strcpy(ARRAY[posicion].tipoCama, aux.tipoCama);
+
+return ARRAY[posicion];
+}
+
+
+
+
+
+
+
 
 
 
