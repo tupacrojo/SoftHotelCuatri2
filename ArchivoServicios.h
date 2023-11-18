@@ -14,27 +14,52 @@
 typedef struct{
 
     int Piso;
-    int borrado;
+    int Id;
+    int Borrado;
     char Servicio[25];
     float PrecioUni;
+
+}StRegistroServicio;
+
+typedef struct {
+
+    int IdServicio;
+    int Borrado;
     char SubServicio[25];
     float Precio;
 
-}StRegistroServicio;
+}StRegistroAdicional;
 
 ///PROTOTIPADO
 
 ///FUNCIONES PARA EL ARCHIVO
 
-void CargarUnArchivo();
-void CargarUnRegistroArchivo(StRegistroServicio Aux);
-void MostrarUnArchivo();
-void DarAltaServicio(int pos,StRegistroServicio Dato);
-void CargarServicioNuevo(StRegistroServicio Aux);
-void MostrarUnRegistro(StRegistroServicio Aux);
-void BorrarUnRegistroArchivo(char Servicio[]);
-int BuscarDatoArchivo(char Servicio[]);
-StRegistroServicio CargarUnRegistro();
+StRegistroServicio CargarUnRegistroServicio();
 StRegistroServicio CambiarValores(StRegistroServicio Aux, StRegistroServicio Dato);
+StRegistroAdicional CargarRegistroAdicional(int Id);
+StRegistroAdicional CambiarValoresAdicionales(StRegistroAdicional Aux, StRegistroAdicional Dato);
+void CargarUnArchivo();
+void CargarUnArchivoServicio();
+void CargarUnArchivoAdicional(int Id);
+void DarAltaServicio(StRegistroServicio Dato);
+void DarAltaServicioAdicional(StRegistroAdicional Dato);
+void MostrarUnArchivoAdicional(int Id);
+void MostrarUnArchivoServicios();
+void CargarUnRegistroArchivo(StRegistroServicio Aux);
+void CargarUnServicioAdicionalArchivo(StRegistroAdicional Aux);
+void CargarServicioNuevo(StRegistroServicio Aux);
+void CargarServicioAdicionalNuevo(StRegistroAdicional Aux);
+void BorrarUnRegistroArchivo(char Servicio[]);
+void BorrarUnRegistroAdicionalArchivo(char Servicio[],int Id);
+void ModificarServicioArchivo(char Servicio[],float nuevo);
+void ModificarServicioAdicionalArchivo(char Servicio[],float nuevo,int Id);
+void MostrarUnRegistroServicio(StRegistroServicio Aux);
+void MostrarUnRegistroServicioAdicional(StRegistroAdicional Aux);
+int BuscarDatoArchivo(char Servicio[]);
+int BuscarIdServicio(int Id);
+int BuscarDatoArchivoAdicional(char Servicio[],int Id);
+int ValidarEstadoServicio(char Servicio[],int pos);
+int ValidarEstadoServicioAdicional(char Servicio[],int pos);
+
 
 #endif // ARCHIVOSERVICIOS_H_INCLUDED

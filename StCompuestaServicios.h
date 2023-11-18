@@ -17,11 +17,15 @@
 ///FUNCIONES DE ESTRUCTURA COMPUESTA
 
 NodoP* CargarListaServicioConArchivo(NodoP * lista);
+NodoP* CargarListaServiciosAdicionalesConArchivo(NodoP * lista,StRegistroServicio Dato);
 NodoP* CargarDatoListaServicios(NodoP*lista);
-NodoP* AltaDeRegistroServicio (NodoP * lista, StRegistroServicio Aux);
-NodoP* BorrarUnDatoServicio(NodoP* lista, char Servicio[]);
+NodoP* AltaDeRegistroServicio (NodoP * lista, StRegistroServicio Aux,StRegistroAdicional Dato);
+NodoP* BorrarUnDatoServicio(NodoP* lista);
+NodoP* ModificarServicioPrincipal(NodoP*lista);
+NodoP* ModificarServicioAdicional(NodoP*lista);
+NodoP* CargarNuevoSubServicio(NodoP*lista);
+NodoP* BorrarUnDatoServicioAdicional(NodoP* lista);
 StServicio CargarUnServicio (StRegistroServicio Aux);
-StRegistroServicio CargarUnServicioManual();
-StSubServicio CargarUnSubservicio (StRegistroServicio Aux);
+StSubServicio CargarUnSubservicio (StRegistroAdicional Aux);
 
 #endif // STCOMPUESTASERVICIOS_H_INCLUDED

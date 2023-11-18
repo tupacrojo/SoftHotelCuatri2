@@ -105,8 +105,8 @@ return lista;
 void MostrarUnServicio(StServicio Dato){
 
     puts("--------------------------------------");
+    printf("NOMBRE DEL SERVICIO: %s \n",Dato.Servicio);
     printf("PISO NUMERO: %d \n",Dato.Piso);
-    printf("SERVICIO: %s \n",Dato.Servicio);
     printf("PRECIO UNITARIO DEL SERVICIO: %.2f \n",Dato.Precio);
     puts("--------------------------------------");
 
@@ -117,7 +117,7 @@ void MostrarUnServicio(StServicio Dato){
 void MostrarUnSubServicio(StSubServicio Dato){
 
     puts("--------------------------------------");
-    printf("SERVICIO ADICIONAL: %s \n",Dato.SubServicio);
+    printf("NOMBRE DEL SERVICIO ADICIONAL: %s \n",Dato.SubServicio);
     printf("PRECIO: %.2f \n",Dato.Precio);
     puts("--------------------------------------");
 
@@ -125,13 +125,18 @@ void MostrarUnSubServicio(StSubServicio Dato){
 
 ///FUNCION PARA MOSTRAR LOS DATOS DENTRO DE LA ESTRUCTURA COMPUESTA
 
-void MostrarListaServicio(NodoP*lista){
+void MostrarListaCompuesta(NodoP*lista){
 
     NodoP*seg = lista;
 
     while(seg!=NULL){
         MostrarUnServicio(seg->Dato);
-        MostrarListaSubServicio(seg->lista);
+        printf("%d",seg->Dato.Id);
+        if(seg->lista != NULL){
+            MostrarListaSubServicio(seg->lista);
+        }else{
+            printf("\nPor el momento el servicio %s no contiene servicios adicionales",seg->Dato.Servicio);
+        }
         seg = seg->siguiente;
         Pause();
     }
@@ -144,6 +149,19 @@ void MostrarListaSubServicio(NodoS*lista){
     while(seg!=NULL){
         MostrarUnSubServicio(seg->Dato);
         seg = seg->siguiente;
+    }
+}
+
+///FUNCION PARA MOSTRAR UNICAMENTE LA LISTA DE SERVICIOS
+
+void MostrarListaServicio(NodoP*lista){
+
+    NodoP*seg = lista;
+
+    while(seg!=NULL){
+        MostrarUnServicio(seg->Dato);
+        seg = seg->siguiente;
+        Pause();
     }
 }
 
@@ -188,6 +206,44 @@ NodoP*BorrarUnNodo(NodoP*lista,char Servicio[]){
 return lista;
 }
 
+///FUNCION PARA BUSCAR UN SERVICIO ADICIONAL
 
+NodoS*BuscarServicioAdicional(NodoS*lista,char Servicio[]){
 
+    NodoS*Aux = NULL;
+    NodoS*seg = lista;
+
+    while(seg != NULL && Aux == NULL){
+        if(strcmpi(seg->Dato.SubServicio,Servicio) == 0){
+            Aux = seg;
+        }
+        seg = seg->siguiente;
+    }
+
+return Aux;
+}
+
+///FUNCION BORRAR UN NODO ADICIONAL
+
+NodoS*BorrarUnNodoAdicional(NodoS*lista,char Servicio[]){
+
+    if(lista!=NULL && strcmpi(lista->Dato.SubServicio,Servicio)==0){
+        NodoS*Aux = lista;
+        lista = lista->siguiente;
+        free(Aux);
+    }else{
+        NodoS*ante = lista;
+        NodoS*seg = lista->siguiente;
+
+        while(seg!=NULL && strcmpi(seg->Dato.SubServicio,Servicio)!=0){
+            ante = seg;
+            seg = seg->siguiente;
+        }
+
+        ante->siguiente = seg->siguiente;
+        free(seg);
+    }
+
+return lista;
+}
 

@@ -12,71 +12,11 @@
 #include "ListasServicios.h"
 #include "StCompuestaServicios.h"
 
-///ESTRUCTURA DE CARACTERISTICAS
-
-typedef struct{
-
-    int id;
-    int borrado;
-    char tipo[30];
-
-}stRegCaracteristicas;
-
-///ESTRUCTURA DE HABITACIONES
-
-typedef struct{
-
-    int id;
-    int borrado;
-    int estado;
-    int piso;
-    stRegCaracteristicas caracteristicas[10];
-
-}stRegHabitacion;
-
-///ESTRUCTURA DE LA RESERVA
-
-typedef struct{
-
-    stRegHabitacion habitacion;
-    int borrado;
-    /// ENTRADA
-    int diaEntrada;
-    int mesEntrada;
-    int anioEntrada;
-    /// SALIDA
-    int diaSalida;
-    int mesSalida;
-    int anioSalida;
-
-}stReserva;
-
-///ESTRUCTURA DE USUARIO
-
-typedef struct{
-
-    int id;
-    int borrado; ///PREGUNTAR
-    int tipo;
-    char contrasena[20];
-    char nombre[50];
-    char apellido[50];
-    char DNI[10];
-    float totalconsumo;
-    stReserva reserva;
-    int edad;
-    char telefono[20];
-    char genero;
-    int hijos;
-    char estadoCivil[20];
-
-}stUsuario;
-
 ///FUNCIONES DE MENU
 
 void Menu();
 void MenuServicios();
-void MenuSubServicio();
+void MenuSubServicio(NodoP*lista);
 void MenuServAdicional();
 
 ///FUNCIONES
@@ -84,11 +24,16 @@ void MenuServAdicional();
 void Funcion1(NodoP*lista);
 void Funcion2(NodoP*lista);
 void Funcion3(NodoP*lista);
+void Funcion4(NodoP*lista);
+void Funcion1B(NodoP*lista);
+void Funcion2B(NodoP*lista);
+void Funcion3B(NodoP*lista);
+void Funcion4B(NodoP*lista);
 
 int main()
 {
     ///CargarUnArchivo();
-    ///MostrarUnArchivo();
+    MostrarUnArchivoServicios();
     MenuServicios();
 
     return 0;
@@ -120,9 +65,10 @@ void MenuServicios(){
             Funcion3(lista);
             break;
         case 4:
+            Funcion4(lista);
             break;
         case 5:
-            MenuSubServicio();
+            MenuSubServicio(lista);
             break;
         default:
             break;
@@ -159,29 +105,24 @@ void Funcion2(NodoP*lista){
 
 void Funcion3(NodoP*lista){
 
-    char Servicio[25];
-
-    printf("Ingrese un servicio a borrar: ");
-    fflush(stdin);
-    gets(Servicio);
-    lista = BorrarUnDatoServicio(lista,Servicio);
+    lista = BorrarUnDatoServicio(lista);
+    printf("El dato se encontro y se borro correctamente, a continuacion la lista modificada: ");
+    Pause();
     MostrarListaServicio(lista);
 
 }
-/**
+
 ///FUNCION 4
 
 void Funcion4(NodoP*lista){
 
-
-
-
+    lista = ModificarServicioPrincipal(lista);
 
 }
-**/
+
 ///FUNCION 5
 
-void MenuSubServicio(){
+void MenuSubServicio(NodoP*lista){
 
     int op;
 
@@ -193,12 +134,16 @@ void MenuSubServicio(){
     switch(op){
 
         case 1:
+            Funcion1B(lista);
             break;
         case 2:
+            Funcion2B(lista);
             break;
         case 3:
+            Funcion3B(lista);
             break;
         case 4:
+            Funcion4B(lista);
             break;
         default:
             break;
@@ -216,5 +161,36 @@ void MenuServAdicional(){
 
 }
 
+///FUNCION 1B
 
+void Funcion1B(NodoP*lista){
+
+    MostrarListaCompuesta(lista);
+}
+
+///FUNCION 2B
+
+void Funcion2B(NodoP*lista){
+
+    lista = CargarNuevoSubServicio(lista);
+    MostrarListaCompuesta(lista);
+    MostrarUnArchivoServicios();
+}
+
+///FUNCION 3B
+
+void Funcion3B(NodoP*lista){
+
+    lista = BorrarUnDatoServicioAdicional(lista);
+    MostrarListaCompuesta(lista);
+    MostrarUnArchivoServicios();
+}
+
+///FUNCION 4B
+
+void Funcion4B(NodoP * lista){
+
+    lista = ModificarServicioAdicional(lista);
+    MostrarUnArchivoServicios();
+}
 

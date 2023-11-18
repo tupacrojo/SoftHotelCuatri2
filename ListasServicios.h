@@ -13,6 +13,7 @@
 
 typedef struct{
 
+    int IdServicio;
     char SubServicio[25];
     float Precio;
 
@@ -22,6 +23,7 @@ typedef struct{
 
 typedef struct{
 
+    int Id;
     int Piso;
     float Precio;
     char Servicio[25];
@@ -57,15 +59,18 @@ NodoP * CrearNodoServicio(StServicio Dato);
 NodoP * AgregarAlPcpioListaServicio (NodoP* lista, NodoP* nuevo);
 NodoP * InsertarOrdenadoListaServicio (NodoP* lista,NodoP* nuevo);
 NodoP * BuscarServicio(NodoP * lista, char Servicio[]);
-void MostrarListaServicio(NodoP*lista);
-void MostrarUnServicio(StServicio Dato);
 NodoP * BorrarUnNodo(NodoP*lista,char Servicio[]);
+void MostrarListaCompuesta(NodoP*lista);
+void MostrarUnServicio(StServicio Dato);
+void MostrarListaServicio(NodoP*lista);
 
 ///LISTA SECUNDARIA
 
 NodoS * InicListaSecundaria();
 NodoS * CrearNodoSubservicio(StSubServicio Dato);
 NodoS * AgregarAlPcpioListaSubservicio (NodoS* lista, NodoS* nuevo);
+NodoS * BuscarServicioAdicional(NodoS*lista,char Servicio[]);
+NodoS * BorrarUnNodoAdicional(NodoS*lista,char Servicio[]);
 void MostrarListaSubServicio(NodoS*lista);
 void MostrarUnSubServicio(StSubServicio Dato);
 
