@@ -69,6 +69,7 @@ void CargarArchiPrecios (FILE * archi);
 void funcion2();
 ArchivoPrecios insertarPrecio (ArchivoPrecios ARRAY[], ArchivoPrecios aux, int posicion);
 void CargarArrayPecios (ArchivoPrecios ARRAY[]);
+void mostrarArrayPrecios (ArchivoPrecios ARRAY[]);
 
 
 
@@ -171,8 +172,13 @@ void FuncionPrincipal (){
 
     mostrarArrayCompleto(PISOS);
 
-    funcion2();
+    //funcion2();
 
+    ArchivoPrecios arrayprecio[9];
+
+    CargarArrayPecios(arrayprecio);
+
+    mostrarArrayPrecios(arrayprecio);
 
 
 
@@ -319,6 +325,8 @@ void funcion2(){
     CargarArchiPrecios(archi);
 
     fclose(archi);
+
+
 }
 
 void CargarArchiPrecios (FILE * archi){ /// CARGAMOS LOS PRECIOS DE LAS HABITACIONES
@@ -362,6 +370,7 @@ void CargarArrayPecios (ArchivoPrecios ARRAY[]){
 
     while (fread(&aux,sizeof(ArchivoPrecios),1,archi)>0){
        ARRAY[x] = insertarPrecio(ARRAY,aux,x);
+       x++;
     }
 
     fclose(archi);
@@ -375,7 +384,17 @@ ArchivoPrecios insertarPrecio (ArchivoPrecios ARRAY[], ArchivoPrecios aux, int p
 return ARRAY[posicion];
 }
 
+void mostrarArrayPrecios (ArchivoPrecios ARRAY[]){
+    int i =0;
 
+    while (i < 9){
+        printf("%s\n", ARRAY[i].caracteristica);
+        printf("%s\n", ARRAY[i].tipoCama);
+        printf("%i\n\n", ARRAY[i].precio);
+
+        i++;
+    }
+}
 
 
 
