@@ -14,16 +14,12 @@
 #include "src/lib/habitacion.h"
 
 /// ESTRUCTURA DE CARACTERISTICAS
-
 typedef struct
 {
-
     int id;
     int borrado;
     char tipo[30];
-
 } stRegCaracteristicas;
-
 /// ESTRUCTURA DE HABITACIONES
 
 typedef struct
@@ -34,14 +30,12 @@ typedef struct
     int estado;
     int piso;
     stRegCaracteristicas caracteristicas[10];
-
 } stRegHabitacion;
 
 /// ESTRUCTURA DE LA RESERVA
 
 typedef struct
 {
-
     stRegHabitacion habitacion;
     int borrado;
     /// ENTRADA
@@ -170,7 +164,7 @@ int main()
     funcionSumarGananciasMes(eventos, validos);
     /* /// FUNCION PARA BORRAR UN EVENTO DE UN MES:
       funcionBorrarEvento(eventos,validos);
-   */
+    */
     /*
     //existeArchivo(aUsuarios);
     nodoLD *lista = inicListaDoble();

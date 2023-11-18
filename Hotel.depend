@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1700272660 source:c:\users\juanx\desktop\tpfinalprogra\hotel\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"empleadosEstruct.h"
-
-1700272443 c:\users\juanx\desktop\tpfinalprogra\hotel\empleadosestruct.h
-
