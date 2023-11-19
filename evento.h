@@ -8,6 +8,7 @@
 
 typedef struct
 {
+    int borrado; /// 0= false; 1= true;
     char mes[10];
     int idMes;
     int dia;
@@ -89,5 +90,8 @@ void funcionSumarCantEventosMes(celdaEvento eventos [], int validos);
 void funcionSumarGananciasMes(celdaEvento eventos[], int validos);
 void buscarYborrarEvento(celdaEvento eventos[], int validos, int idMes, int dia);
 void funcionBorrarEvento(celdaEvento eventos[],int validos);
+void funcionCargarEvento ();
+void borrarUnRegistroDelArchivo(int mes, int dia);
+int buscarEventoBorrado(stRegistroEvento evento);
 
 #endif // EVENTO_H_INCLUDED

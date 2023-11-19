@@ -118,7 +118,7 @@ stEvento * borrarUnEvento (stEvento * lista, int dia)
         else
         {
             seg = lista;
-             while((seg != NULL)&& (dia > lista->dato.dia))
+            while((seg != NULL)&& (dia > lista->dato.dia))
             {
                 ante = seg;
                 seg = seg->siguiente;
@@ -130,7 +130,12 @@ stEvento * borrarUnEvento (stEvento * lista, int dia)
                 ante->siguiente = seg->siguiente;
                 free(seg);
             }
+            else
+            {
+                printf("No existe el evento ingresado \n"); /// si recorri toda la lista y el num de evento no esta
+            }
         }
+
 
     }
 
@@ -170,6 +175,8 @@ stRegistroEvento cargarUnEvento()
 {
     stRegistroEvento aux;
 
+    aux.borrado =0;  /// inicializo en 0 para que me lo cargue al archivo
+
     printf("Ingrese mes del evento: \n");
     fflush(stdin);
     gets(aux.mes);
@@ -207,6 +214,7 @@ stRegistroEvento cargarUnEvento()
     return aux;
 }
 
+/// CARGAR EL ARCHIVO ENTERO
 
 void cargarArchivo ()
 {
@@ -230,6 +238,24 @@ void cargarArchivo ()
 
 
 }
+
+/// CARGAR UN SOLO EVENTO AL ARCHIVO
+
+void funcionCargarEvento ()
+{
+    stRegistroEvento aux;
+    FILE * archi = fopen(nombreArchivo, "ab");
+
+    if(archi)
+    {
+        aux = cargarUnEvento();
+        fwrite(&aux, sizeof(stRegistroEvento),1,archi);
+
+        fclose(archi);
+    }
+
+}
+
 
 /// CARGAR ARREGLO
 
@@ -258,8 +284,11 @@ int pasarDatosDeArchivoAarregloEventos(celdaEvento eventos [],int dim, int valid
             strcpy(cliente.telefono, aux.telefono);
             strcpy(cliente.dni, aux.dni);
 
+            if(!buscarEventoBorrado(aux))   /// compruebo que el registro no este borrado
+            {
+                validos = altaEventos(eventos, dim, validos, cliente,datoMes);
+            }
 
-            validos = altaEventos(eventos, dim, validos, cliente,datoMes);
         }
 
         fclose(archi);
@@ -270,7 +299,7 @@ int pasarDatosDeArchivoAarregloEventos(celdaEvento eventos [],int dim, int valid
 
 /// FUNCION DE CARGA:
 
-int altaEventos(celdaEvento eventos[], int dim, int validos, stClienteEvento cliente , stDatosMes datoMes)
+int altaEventos(celdaEvento eventos[], int dim, int validos, stClienteEvento cliente, stDatosMes datoMes)
 {
     stEvento * aux = crearNodoEvento(cliente);
     int pos = buscaPosMes (eventos,datoMes.idMes, validos);
@@ -308,7 +337,7 @@ int buscaPosMes(celdaEvento eventos[],int idMes, int validos)
 int insertarEventoOrdenado(celdaEvento eventos[], int validos, stDatosMes datoMes)
 {
     int ult = validos-1;
-     while (ult >= 0 && datoMes.idMes < eventos[ult].datoMes.idMes)
+    while (ult >= 0 && datoMes.idMes < eventos[ult].datoMes.idMes)
     {
         eventos[ult+1]=eventos[ult];
         eventos[ult+1].listaDeDias = eventos[ult].listaDeDias;
@@ -326,19 +355,26 @@ void buscarMesYmostrar(celdaEvento eventos[], int validos, int idMes)
 {
     int pos=0;
     pos=buscaPosMes(eventos, idMes, validos);
+    if(pos == -1)
+    {
+        printf("No hay eventos ese mes \n");
+    }
+    else
+    {
+        mostrarListaEvento(eventos[pos].listaDeDias);
+    }
 
-    mostrarListaEvento(eventos[pos].listaDeDias);
 }
 
 
 void mostrarMesyDias(celdaEvento eventos[], int validos)
 {
- for (int i = 0; i<validos; i++)
- {
-     printf("\n %i \n", eventos[i].datoMes.idMes);
-     printf("\n %s \n", eventos[i].datoMes.mes);
-    mostrarListaEvento(eventos[i].listaDeDias);
- }
+    for (int i = 0; i<validos; i++)
+    {
+        printf("\n %i \n", eventos[i].datoMes.idMes);
+        printf("\n %s \n", eventos[i].datoMes.mes);
+        mostrarListaEvento(eventos[i].listaDeDias);
+    }
 }
 
 /// PASAR DEL ARREGLO AL ARCHIVO:
@@ -367,7 +403,7 @@ void guardarEventosEnArchivo (celdaEvento eventos[], int validos)
             strcpy(aux.telefono, seg->dato.telefono);
             strcpy(aux.dni, seg->dato.dni);
 
-           guardarProximosEventos("proximosEventos",aux);
+            guardarProximosEventos("proximosEventos",aux);
 
             seg = seg->siguiente;
         }
@@ -392,22 +428,25 @@ void guardarProximosEventos (char archivo[], stRegistroEvento aux)
 void buscarYmostrarFechaDisponibleEvento(celdaEvento eventos[], int validos, int idMes, int dia)
 {
     int pos = buscaPosMes(eventos,idMes,validos);
-    if(pos>=0)
+    if(pos != -1)
     {
         stEvento * rta = buscarUnEvento(eventos[pos].listaDeDias, dia);
         if(rta !=NULL)
         {
             printf(" \n EL DIA YA ESTA OCUPADO \n");
-        } else
+        }
+        else
         {
             printf("\n EL DIA ESTA DISPONIBLE \n");
         }
     }
     else
     {
-        printf(" \nNO HAY EVENTOS EL MES ELEGIDO \n");
+        printf(" \n NO HAY EVENTOS EL MES ELEGIDO \n");
     }
 }
+
+
 int sumarCantidadEventosDeUnMes(celdaEvento eventos[], int validos, int idMes)
 {
     int suma=0;
@@ -502,7 +541,8 @@ void buscarYborrarEvento(celdaEvento eventos[], int validos, int idMes, int dia)
     if(pos == -1)
     {
         printf(" NO EXISTE ESE EVENTO \n");
-    } else
+    }
+    else
     {
         eventos[pos].listaDeDias = borrarUnEvento(eventos[pos].listaDeDias, dia);
     }
@@ -515,7 +555,44 @@ void funcionBorrarEvento(celdaEvento eventos[],int validos)
     printf("Ingrese el DIA del evento que quiere borrar: \n");
     scanf("%i", &dia);
     buscarYborrarEvento(eventos, validos, idMes, dia);
+    borrarUnRegistroDelArchivo(idMes,dia);
     printf("\n BORRADO: \n");
     mostrarMesyDias(eventos,validos);
 
+}
+
+
+void borrarUnRegistroDelArchivo(int mes, int dia)
+{
+    stRegistroEvento aux;
+    FILE * archi = fopen(nombreArchivo, "r+b");
+    int flag =0;
+
+    if(archi)
+    {
+        while((fread(&aux,sizeof(stRegistroEvento),1,archi)>0) && flag == 0)
+        {
+            if(aux.idMes == mes && aux.dia == dia)
+            {
+                aux.borrado = 1;
+                fseek(archi,-sizeof(stRegistroEvento),SEEK_CUR);
+                fwrite(&aux,sizeof(stRegistroEvento),1,archi);
+                flag =1;
+
+            }
+        }
+      fclose(archi);
+    }
+}
+
+
+int buscarEventoBorrado(stRegistroEvento evento)
+{
+    if(evento.borrado == 0)
+    {
+        return 0;
+    } else
+    {
+        return 1;
+    }
 }
