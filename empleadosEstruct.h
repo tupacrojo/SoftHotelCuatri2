@@ -37,3 +37,4 @@ nodoArbol*crearNodoArbol (stEmpleado aux);
 nodoArbol* inicArbol();
 nodoArbol*buscarUnEmpleadoPorDni(nodoArbol*arbol,char buscado[]);
 nodoArbol*modificarUnEmpleado(nodoArbol*arbol);
+int subirEmpleadoManual(stCeldas celdas[],int validos);

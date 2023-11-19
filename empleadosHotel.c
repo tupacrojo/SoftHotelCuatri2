@@ -107,6 +107,8 @@ int cargarDatosEmpleadosDesdeArchivo(stCeldas celdas[],int validos, int dim)
         }
 
         fclose(archivo);
+    }else{
+    validos = subirEmpleadoManual(celdas,validos);
     }
 
     return validos;
@@ -179,19 +181,46 @@ nodoArbol*buscarUnEmpleadoPorDni(nodoArbol*arbol,char buscado[])
 
 nodoArbol*modificarUnEmpleado(nodoArbol*arbol)
 {
+
     char dniAbuscar[10];
     printf("ingrese el dni del empleado a modificar: ");
     fflush(stdin);
     gets(dniAbuscar);
     nodoArbol*empleadoAmodificar=buscarUnEmpleadoPorDni(arbol,dniAbuscar);
 
-    //hay q modificar un dato o varios aqui
+    printf("ingrese id del empleado \n");
+    fflush(stdin);
+    scanf(empleadoAmodificar->dato.id);
+    printf("ingrese tipo de empleado \n");
+    fflush(stdin);
+    scanf(empleadoAmodificar->dato.tipo);
+    printf("ingrese la contraseña empleado \n");
+    fflush(stdin);
+    gets(empleadoAmodificar->dato.contrasena);
+    printf("ingrese nombre del empleado \n");
+    fflush(stdin);
+    gets(empleadoAmodificar->dato.nombre);
+    printf("ingrese apellido del empleado \n");
+    fflush(stdin);
+    gets(empleadoAmodificar->dato.apellido);
+    printf("ingrese el telefono del empleado \n");
+    fflush(stdin);
+    gets(empleadoAmodificar->dato.telefono);
+    printf("ingrese el genero del empleado \n");
+    fflush(stdin);
+    getc(empleadoAmodificar->dato.genero);
+    printf("el empleado esta activo 0 si es 1 no \n ");
+    fflush(stdin);
+    scanf(empleadoAmodificar->dato.borrado);
 
 return arbol;
 }
 
 int subirEmpleadoManual(stCeldas celdas[],int validos)
 {
+    FILE * archivo = fopen(nombreArchivo,"ab");
+    if(archivo)
+    {
     stEmpleado aux;
     stCeldas auxTipo;
     printf("ingrese id del empleado \n");
@@ -217,7 +246,8 @@ int subirEmpleadoManual(stCeldas celdas[],int validos)
     fflush(stdin);
     getc(aux.genero);
     aux.borrado=0;
-
     validos=alta(celdas,validos,aux,auxTipo);
+    fwrite(&aux,sizeof(stEmpleado),1,nombreArchivo);
+    }
     return validos;
 }
