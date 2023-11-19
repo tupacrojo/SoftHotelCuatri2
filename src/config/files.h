@@ -13,3 +13,6 @@
 #define aConsumibles_Bak "data/consumibles_bak.bin"
 #define aHabitaciones_Bak "data/habitaciones_bak.bin"
 #define aUsuarios_Bak "data/usuarios_bak.bin"
+
+
+#define aEventos "eventos.bin"
