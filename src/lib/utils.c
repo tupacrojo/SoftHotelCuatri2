@@ -163,3 +163,29 @@ void checkOut(stUsuario u)
     cambiarEstadoHabitacion(u.reserva.habitacion.id, 0);
     borrarReserva(u.DNI);
 }
+
+
+int verificarCaracter()
+{
+    int entrada;
+    printf("Ingresa un caracter: ");
+    while ((entrada = _getch()) != 42) // Espera hasta que se presione Esc (código ASCII 27)
+    {
+        if ((entrada >= 'a' && entrada <= 'z') || (entrada >= 'A' && entrada <= 'Z'))
+        {
+            printf("%c\n", entrada);
+            return entrada;
+        }
+        else if (entrada == '\r')
+        {
+            printf("\n");
+        }
+        else
+        {
+            printf("Entrada Incorrecta\n");
+            printf("Ingresa un caracter: ");
+        }
+    }
+    printf("\nOperacion cancelada.\n");
+    return -1;
+}
