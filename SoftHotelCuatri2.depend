@@ -55,3 +55,149 @@
 1700419603 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\menu.c
 	"Menu.h"
 
+1700412338 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\evento.c
+	"evento.h"
+	"string.h"
+
+1700412338 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\evento.h
+	<stdio.h>
+	<stdlib.h>
+
+1700410319 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\arraylista.c
+	"arrayLista.h"
+
+1700410319 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\arraylista.h
+	<stdio.h>
+	<stdlib.h>
+	<malloc.h>
+	<string.h>
+	<time.h>
+	"../config/files.h"
+	"habitacion.h"
+	"caracteristicas.h"
+
+1700410319 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\config\files.h
+
+1700411499 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\habitacion.h
+	<stdio.h>
+	"../config/files.h"
+
+1700410319 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\caracteristicas.h
+
+1700410319 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\caracteristicas.c
+
+1700411499 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\habitacion.c
+	"habitacion.h"
+	"../../librerias.h"
+
+1700412909 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\librerias.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<shlobj.h>
+	<ctype.h>
+	<conio.h>
+	"src/config/files.h"
+
+1700411499 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\menu.c
+	"menu.h"
+
+1700410319 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\menu.h
+	"usuario.h"
+	"utils.h"
+	"reserva.h"
+	"habitacion.h"
+	"utils.h"
+
+1700410319 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\usuario.h
+	<stdlib.h>
+	<stdio.h>
+	"../config/files.h"
+	"reserva.h"
+
+1700411499 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\reserva.h
+	<stdio.h>
+	<time.h>
+	"../config/files.h"
+	"habitacion.h"
+
+1700413947 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\utils.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	<shlobj.h>
+	"../config/files.h"
+	"usuario.h"
+	"habitacion.h"
+
+1700411499 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\reserva.c
+	"reserva.h"
+	"usuario.h"
+
+1700410319 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\usuario.c
+	"usuario.h"
+
+1700413947 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\utils.c
+	"utils.h"
+
+1700411499 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\visual.c
+	"visual.h"
+
+1700411499 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\visual.h
+	<stdio.h>
+	<windows.h>
+
+1700419829 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\archivoservicios.c
+	"ArchivoServicios.h"
+
+1700419831 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\archivoservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+
+1700419834 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\listasservicios.c
+	"ListasServicios.h"
+
+1700419838 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\listasservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+
+1700419843 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\main.c
+	"ArchivoServicios.h"
+	"ListasServicios.h"
+	"StCompuestaServicios.h"
+	"Menu.h"
+	"librerias.h"
+
+1700419824 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\stcompuestaservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+	"ArchivoServicios.h"
+	"ListasServicios.h"
+
+1700414140 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+	"ArchivoServicios.h"
+	"ListasServicios.h"
+	"StCompuestaServicios.h"
+
+1700412436 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\menu.c
+	"Menu.h"
+
+1700419839 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\stcompuestaservicios.c
+	"StCompuestaServicios.h"
+

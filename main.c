@@ -1,4 +1,3 @@
-///LIBRERIAS DE CODEBLOCKS
 
 
 
@@ -12,7 +11,9 @@
 
 int main()
 {
-    MenuServicios();
+
+
+
 
     return 0;
 }
