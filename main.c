@@ -1,10 +1,6 @@
 ///LIBRERIAS DE CODEBLOCKS
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <conio.h>
-#include <string.h>
+
 
 ///LIBRERIAS PARA LISTA DE LISTAS
 
@@ -12,6 +8,7 @@
 #include "ListasServicios.h"
 #include "StCompuestaServicios.h"
 #include "Menu.h"
+#include "librerias.h"
 
 int main()
 {
