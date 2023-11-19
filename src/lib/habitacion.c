@@ -1,5 +1,5 @@
 #include "habitacion.h"
-
+#include "../../librerias.h"
 
 /** \fn int obtenerUltimoIdHabitaciones()
  * \brief Accede al archivo, obtine el ultimo id habitacion y lo retorna
@@ -155,7 +155,7 @@ void agregarHabitacionArchivo2(stRegHabitacion a)
  * \param tipo "0 Basica, 1 Deluxe, 2 Suite, 3 Suite Premium"
  * \return Devuelvo una estructura stRegHabitacion con los datos cargados.
  */
-stRegHabitacion agregarHabitacionPorParametro(int id, int piso, int tipo)
+stRegHabitacion agregarHabitacionPorParametro(int id, int piso, int caracteristica)
 {
     stRegHabitacion a;
     a.id = id;
@@ -181,6 +181,12 @@ stRegHabitacion agregarHabitacionPorParametro(int id, int piso, int tipo)
         break;
     }
     return a;
+}
+
+
+int exportarCaracteristicaArchivo(char caracteristica[])
+{
+    FILE * archi = fopen()
 }
 
 /** \fn int borrarHabitacion(int id)
