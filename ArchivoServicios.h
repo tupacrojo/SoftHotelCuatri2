@@ -51,6 +51,7 @@ void CargarServicioNuevo(StRegistroServicio Aux);
 void CargarServicioAdicionalNuevo(StRegistroAdicional Aux);
 void BorrarUnRegistroArchivo(char Servicio[]);
 void BorrarUnRegistroAdicionalArchivo(char Servicio[],int Id);
+void BorrarConjuntoDeRegistros (int Id);
 void ModificarServicioArchivo(char Servicio[],float nuevo);
 void ModificarServicioAdicionalArchivo(char Servicio[],float nuevo,int Id);
 void MostrarUnRegistroServicio(StRegistroServicio Aux);

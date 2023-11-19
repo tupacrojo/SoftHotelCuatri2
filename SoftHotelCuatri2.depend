@@ -9,14 +9,14 @@
 	"ListasServicios.h"
 	"StCompuestaServicios.h"
 
-1700343915 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.h
+1700352863 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.h
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<conio.h>
 	<string.h>
 
-1700351245 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.c
+1700352863 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.c
 	"ArchivoServicios.h"
 
 1700351299 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\listasservicios.c

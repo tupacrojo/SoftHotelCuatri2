@@ -125,6 +125,7 @@ return lista;
 NodoP*BorrarUnDatoServicio(NodoP* lista){
 
     char Servicio[25];
+    NodoP*Buscado;
 
     printf("Ingrese un servicio a borrar: ");
     fflush(stdin);
@@ -136,6 +137,8 @@ NodoP*BorrarUnDatoServicio(NodoP* lista){
         gets(Servicio);
     }
 
+    Buscado = BuscarServicio(lista,Servicio);
+    BorrarConjuntoDeRegistros(Buscado->Dato.Id);
     lista = BorrarUnNodo(lista,Servicio);
     BorrarUnRegistroArchivo(Servicio);
 

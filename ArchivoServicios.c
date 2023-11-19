@@ -534,6 +534,31 @@ void CargarUnServicioAdicionalArchivo(StRegistroAdicional Aux){
 
 }
 
+///FUNCION PARA BORRAR CONJUNTO DE REGISTROS
+
+void BorrarConjuntoDeRegistros (int Id){
+
+    StRegistroAdicional Aux;
+
+    FILE*archi = fopen(Adicionales,"r+b");
+
+    if(archi!=NULL){
+        while(fread(&Aux,sizeof(StRegistroAdicional),1,archi)>0){
+            if(Aux.IdServicio == Id){
+                Aux.Borrado =0;
+                fseek(archi,-1*sizeof(StRegistroAdicional),SEEK_CUR);
+                fwrite(&Aux,sizeof(StRegistroAdicional),1,archi);
+            }
+
+        }
+        fclose(archi);
+    }else{
+        printf("El archivo se abrio incorrectamente\n");
+    }
+
+}
+
+
 ///FUNCION PARA BORRAR UN DATO DEL ARCHIVO
 
 void BorrarUnRegistroAdicionalArchivo(char Servicio[],int Id){
