@@ -30,7 +30,7 @@ int esFechaValida(int dia, int mes, int anio);
 int esFechaPosterior(int dia, int mes, int anio);
 int esFechaPosteriorA(int diaAn, int mesAn, int anioAn, int diaPos, int mesPos, int anioPos);
 nodoLD *inicListaDoble();
-nodoLD* crearNodo(stReserva dato);
+nodoLD* crearNodoLd(stReserva dato);
 nodoLD* insertarAlPrincipio(nodoLD* lista, stReserva dato);
 nodoLD *insertarAlFinal(nodoLD* lista, stReserva dato);
 nodoLD *cargarListaDobleArchivo(nodoLD * lista, char archivo[]);

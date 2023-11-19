@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "../config/files.h"
 
+
 /// ESTRUCTURA DE HABITACIONES
 
 typedef struct
@@ -13,8 +14,6 @@ typedef struct
     char tipoDeCama[13]; /// simple, matrimonial o combinada
     int idPiso;
 } stRegHabitacion;
-
-
 
 int obtenerUltimoIdHabitaciones();
 stRegHabitacion extraerHabitacion(int id);

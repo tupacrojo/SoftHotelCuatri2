@@ -133,3 +133,33 @@ void cambiarSlash(char ruta[], int validos) /*** cambiarSlash recibe "C:\Users\T
         }
     }
 }
+
+void checkIn(stUsuario u)
+{
+    stRegHabitacion a;
+    FILE *archi = fopen(aHabitaciones, "r+b");
+    if (archi != NULL)
+    {
+        while (!feof(archi) && fread(&a, sizeof(stRegHabitacion), 1, archi))
+        {
+            fread(&a, sizeof(stRegHabitacion), 1, archi);
+            if (strcmp(u.reserva.habitacion.caracteristicas, a.caracteristicas) == 0 && a.ocupado == 0)
+            {
+                u.reserva.habitacion.idPiso = a.idPiso;
+                u.reserva.habitacion.id = a.id;
+                a.ocupado = 1;
+                fseek(archi, -sizeof(stRegHabitacion), SEEK_CUR);
+                fwrite(&a, sizeof(stRegHabitacion), 1, archi);
+                break;
+            }
+        }
+        printf("Su habitacion es la del ID: %i en el piso: %i\n", u.reserva.habitacion.id, u.reserva.habitacion.idPiso);
+        fclose(archi);
+    }
+}
+
+void checkOut(stUsuario u)
+{
+    cambiarEstadoHabitacion(u.reserva.habitacion.id, 0);
+    borrarReserva(u.DNI);
+}
