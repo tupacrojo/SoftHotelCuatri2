@@ -16,7 +16,7 @@ typedef struct /// "stUsuario" usuario
     char DNI[10];
     float totalconsumo;
     stReserva reserva;
-    int edad; // a�os
+    int edad; // años
     char telefono[20];
     char genero; // m = masculino , f = femenino, o = otros
     int hijos;

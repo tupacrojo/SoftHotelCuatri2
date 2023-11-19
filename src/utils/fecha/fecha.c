@@ -4,8 +4,8 @@
 #include "stdbool.h"
 #include "time.h"
 
-#include "../../services/configuracion/configuracion.h"
-#include "../../config/mensajes.h"
+//#include "../../services/configuracion/configuracion.h"
+//#include "../../config/mensajes.h"
 
 char *meses[] = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
                  "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};

@@ -46,14 +46,12 @@ typedef struct
     int diaSalida;
     int mesSalida;
     int anioSalida;
-
 } stReserva;
 
 /// ESTRUCTURA DE USUARIO
 
 typedef struct
 {
-
     int id;
     int borrado; /// PREGUNTAR
     int tipo;
@@ -68,7 +66,6 @@ typedef struct
     char genero;
     int hijos;
     char estadoCivil[20];
-
 } stUsuario;
 
 /// FUNCIONES DE MENU
