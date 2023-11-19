@@ -1,5 +1,48 @@
 # depslib dependency file v1.0
-1700350849 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\main.c
+1700407094 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+	"ArchivoServicios.h"
+	"ListasServicios.h"
+	"StCompuestaServicios.h"
+	"Menu.h"
+
+1700406820 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+
+1700406820 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.c
+	"ArchivoServicios.h"
+
+1700406820 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\listasservicios.c
+	"ListasServicios.h"
+
+1700406820 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\listasservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+
+1700406820 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\stcompuestaservicios.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<conio.h>
+	<string.h>
+	"ArchivoServicios.h"
+	"ListasServicios.h"
+
+1700406820 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\stcompuestaservicios.c
+	"StCompuestaServicios.h"
+
+1700407069 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\menu.h
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -9,35 +52,6 @@
 	"ListasServicios.h"
 	"StCompuestaServicios.h"
 
-1700352863 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.h
-	<stdio.h>
-	<stdlib.h>
-	<ctype.h>
-	<conio.h>
-	<string.h>
-
-1700352863 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\archivoservicios.c
-	"ArchivoServicios.h"
-
-1700351299 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\listasservicios.c
-	"ListasServicios.h"
-
-1700341679 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\listasservicios.h
-	<stdio.h>
-	<stdlib.h>
-	<ctype.h>
-	<conio.h>
-	<string.h>
-
-1700343531 c:\users\nlope\onedrive\documents\github\softhotelcuatri2\stcompuestaservicios.h
-	<stdio.h>
-	<stdlib.h>
-	<ctype.h>
-	<conio.h>
-	<string.h>
-	"ArchivoServicios.h"
-	"ListasServicios.h"
-
-1700351094 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\stcompuestaservicios.c
-	"StCompuestaServicios.h"
+1700407067 source:c:\users\nlope\onedrive\documents\github\softhotelcuatri2\menu.c
+	"Menu.h"
 
