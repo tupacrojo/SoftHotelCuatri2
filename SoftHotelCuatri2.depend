@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1700350744 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\main.c
+1700404920 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<malloc.h>
 	<string.h>
 	<time.h>
+	"../ArrayListas.h"
 
 1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\caracteristicas.c
 
@@ -66,4 +67,14 @@
 
 1699826301 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\src\lib\utils.c
 	"utils.h"
+
+1700404435 c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\arraylistas.h
+
+1700404938 source:c:\users\maria\onedrive\escritorio\utn\programacion 2\tp final perro\softhotelcuatri2\arraylistas.c
+	<stdio.h>
+	<stdlib.h>
+	<malloc.h>
+	<string.h>
+	<time.h>
+	"../ArrayListas.h"
 
