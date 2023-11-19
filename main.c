@@ -145,8 +145,10 @@ int main()
     int arregloDePisos[15] = cargarArregloDePisos();
     int validos = 0;
     celdaEvento eventos[11];
-    // cargarArchivo();
+    //cargarArchivo();
 
+    /// FUNCION PARA QUE EL USUARIO CARGUE UN SOLO EVENTO (Aca lo cargo en el archivo)
+   // funcionCargarEvento();
     /// FUNCION PARA CARGAR EL ARREGLO:
     validos = pasarDatosDeArchivoAarregloEventos(eventos, 11, validos);
     /// FUNCION PARA MOSTRAR EL ARREGLO COMPLETO:
