@@ -164,7 +164,11 @@ void checkOut(stUsuario u)
     borrarReserva(u.DNI);
 }
 
-
+/**
+ * \fn int verificarCaracter()
+ * \brief lee la letra en codigo ASCII, compara que no toque esc y que sea una letra, si tocas esc se cancela, si no es letra te pide que sigas metiendo
+ * \return int de codigo ASCII ó -1 si cancelaste
+*/
 int verificarCaracter()
 {
     int entrada;
@@ -188,4 +192,17 @@ int verificarCaracter()
     }
     printf("\nOperacion cancelada.\n");
     return -1;
+}
+/**
+ * \fn void mostrarVarCharInvertida(int flag)
+ * \brief asi se usa la funcion, esta solo muestra la letra, pero en caso de querer guardarse en un string seria lo mismo
+*/
+void mostrarVarCharInvertida(int flag)
+{
+    if (flag != -1)
+    {
+        flag = verificarCaracter();
+        mostrarVarCharInvertida(flag);
+        printf("%c", flag);
+    }
 }

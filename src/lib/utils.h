@@ -30,3 +30,4 @@ stUtils crearArregloDePalabraConsumibles();
 void checkIn(stUsuario u);
 void checkOut(stUsuario u);
 int verificarCaracter();
+void mostrarVarCharInvertida(int flag);
