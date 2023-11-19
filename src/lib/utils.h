@@ -5,7 +5,8 @@
 #include <windows.h>
 #include <shlobj.h>
 #include "../config/files.h"
-
+#include "usuario.h"
+#include "habitacion.h"
 
 typedef struct
 {
@@ -25,3 +26,6 @@ void cambiarSlash(char ruta[], int validos);
 
 stUtils crearMatrizConsumibles();
 stUtils crearArregloDePalabraConsumibles();
+
+void checkIn(stUsuario u);
+void checkOut(stUsuario u);

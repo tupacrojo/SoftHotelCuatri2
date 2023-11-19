@@ -13,8 +13,8 @@ void borraDatosReserva(stReserva *r)
     r->diaSalida = 0;
     r->mesEntrada = 0;
     r->mesSalida = 0;
-    r->habitacion.estado = 0;
-    r->habitacion.piso = 0;
+    r->habitacion.ocupado = 0;
+    r->habitacion.idPiso = 0;
     memset(r->habitacion.caracteristicas,0,sizeof(r->habitacion.caracteristicas));
 }
 
@@ -168,8 +168,7 @@ nodoLD *inicListaDoble()
  * \brief recibe un dato de tipo reserva para almacenarlo en la lista doble y poner sus ramas en NULL
  * \return retorna el nodo creado con la informacion
 */
-// Función para crear un nuevo nodo
-nodoLD* crearNodo(stReserva dato)
+nodoLD* crearNodoLd(stReserva dato)
 {
     nodoLD* nuevoNodo = (nodoLD*)malloc(sizeof(nodoLD));
     nuevoNodo->reserva = dato;
@@ -238,7 +237,7 @@ void mostrarReserva(stReserva r)
     printf(" D%ca de Salida                 : %i\n", 161, r.diaSalida);
     printf(" Mes de Sal%cda                 : %i\n", 161, r.mesSalida);
     printf(" A%co de Salida                 : %i\n", 164, r.anioSalida);
-    printf(" Caracteristicas de Habitaci%cn : %s\n", 162,r.habitacion.tipo);
+    printf(" Caracteristicas de Habitaci%cn : %s\n", 162,r.habitacion.caracteristicas);
     puts("------------------------------------------------");
 }
 

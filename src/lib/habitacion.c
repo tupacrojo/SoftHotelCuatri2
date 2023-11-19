@@ -95,10 +95,10 @@ void agregarHabitacion(stRegHabitacion *a)
 {
     int opcion = 0;
     a->id = obtenerUltimoIdHabitaciones() + 1;
-    a->estado = 0;
+    a->ocupado = 0;
     printf("\nEn que piso esta la habitacion? ");
     fflush(stdin);
-    scanf("%i", &a->piso);
+    scanf("%i", &a->idPiso);
 
     opcion = 0;
     printf("\nCual es el tipo de habitacion? ");
@@ -141,9 +141,8 @@ stRegHabitacion agregarHabitacionPorParametro(int id, int piso, int caracteristi
 {
     stRegHabitacion a;
     a.id = id;
-    a.borrado = 0;
-    a.estado = 0;
-    a.piso = piso;
+    a.ocupado = 0;
+    a.idPiso = piso;
 /// falta caracteristica
     return a;
 }
@@ -187,8 +186,8 @@ int borrarHabitacion(int id)
  */
 void borraDatosHabitacion(stRegHabitacion *a)
 {
-    a->estado = 0;
-    a->piso = 0;
+    a->ocupado = 0;
+    a->idPiso = 0;
     /*
     memset(a->tipo, 0, 50);
     */
@@ -202,8 +201,8 @@ void mostrarHabitacion(stRegHabitacion a)
 {
     puts("------------------------------------------------");
     printf("     ID          : %i\n", a.id);
-    printf("     Estado      : %i\n", a.estado);
-    printf("     Piso        : %i\n", a.piso);
+    printf("     Estado      : %i\n", a.ocupado);
+    printf("     Piso        : %i\n", a.idPiso);
     /*
     printf("     Tipo        : %s\n", a.tipo);
     */
@@ -233,35 +232,6 @@ void mostrarHabitaciones()
 }
 
 //-------------------| MODIFICAR Habitacion |-------------------
-
-void cambiarBorradoHabitacion(int id)
-{
-    stRegHabitacion a;
-    FILE *archi = fopen(aHabitaciones, "r+b");
-    if(archi != NULL)
-    {
-        while(!feof(archi) && fread(&a,sizeof(stRegHabitacion),1,archi))
-        {
-            if(id == a.id)
-            {
-             switch (a.borrado)
-                {
-                case 1:
-                    a.borrado = 0;
-                    break;
-
-                case 0:
-                    a.borrado = 1;
-                    break;
-                }
-                fseek(archi, -sizeof(stRegHabitacion), SEEK_CUR);
-                fwrite(&a, sizeof(stRegHabitacion), 1, archi);
-                break;
-            }
-            fclose(archi);
-        }
-    }
-}
 
 /** \fn int cambiarTipoHabitacion(int id, char nuevoTipo[])
  * \brief Modifica el valor "u.tipo" de la estructura usuario almacenada en el archivo
@@ -315,7 +285,7 @@ int cambiarEstadoHabitacion(int id, int nuevoEstado)
         {
             if (id == habitacion.id)
             {
-                habitacion.estado = nuevoEstado;
+                habitacion.ocupado = nuevoEstado;
                 fseek(archi, -sizeof(stRegHabitacion), SEEK_CUR);
                 fwrite(&habitacion, sizeof(stRegHabitacion), 1, archi);
                 encontrado = 1;
@@ -348,7 +318,7 @@ int cambiarPisoHabitacion(int id, int nuevoPiso)
         {
             if (id == habitacion.id)
             {
-                habitacion.piso = nuevoPiso;
+                habitacion.idPiso = nuevoPiso;
                 fseek(archi, -sizeof(stRegHabitacion), SEEK_CUR);
                 fwrite(&habitacion, sizeof(stRegHabitacion), 1, archi);
                 encontrado = 1;
@@ -402,7 +372,7 @@ int cambiarDatosDeHabitacion(int selector, int id)
         break;
 
     case 3:
-        cambiarBorradoHabitacion(id);
+      ///  cambiarBorradoHabitacion(id);
     break;
 
     default:

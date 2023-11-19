@@ -1,79 +1,6 @@
 #include "menu.h"
 
-void menuHuesped(stUsuario a)
-{
-    int selector = 0;
-    do
-    {
-        mostrarSubmenuHuesped();
-        scanf("%i", &selector);
-        switch (selector)
-        {
-        case 1:
-        {
-            if (crearReserva(a.id) == 0)
-            {
-                printf("reserva creada exitosamente");
-                selector = 1;
-                break;
-            }
-        }
 
-        case 2:
-        {
-            mostrarReserva(extraerUsuario(a.id));
-            // system("PAUSE");
-        }
-
-        case 3:
-        {
-            borrarReserva(a.DNI);
-            system("PAUSE");
-            break;
-        }
-        case 4:
-        {
-            checkIn(extraerUsuario(a.id));
-            system("PAUSE");
-            break;
-        }
-        case 5:
-        {
-            stUsuario u = extraerUsuario(a.id);
-            checkOut(u);
-            system("PAUSE");
-            break;
-        }
-        case 6:
-        {
-            mostrarHabitacionUsuario(extraerUsuario(a.id));
-            system("PAUSE");
-            break;
-        }
-        case 7:
-        {
-            printf("Ingrese su nueva contrase%ca: ", 164);
-            char contrasena[20];
-            fflush(stdin);
-            gets(contrasena);
-            cambiarContrasenaUsuario(a.id, contrasena);
-            system("PAUSE");
-            break;
-        }
-        case 0:
-        {
-            atras("Cerrando sesion");
-            break;
-        }
-
-        default:
-        {
-            printf("Opcion invalida");
-            break;
-        }
-        }
-    } while (selector != 0);
-}
 
 void menuEmpleado(stUsuario a)
 {
@@ -115,7 +42,7 @@ void menuEmpleado(stUsuario a)
             fflush(stdin);
             gets(documento);
             int id = buscarUsuarioDocumento(documento);
-            mostrarReserva(extraerUsuario(id));
+            ///mostrarReserva(extraerUsuario(id));
             system("PAUSE");
             break;
         }
@@ -129,7 +56,7 @@ void menuEmpleado(stUsuario a)
 
         case 5: // Mostrar Huespedes
         {
-            mostrarUsuariosTipo(buscarUsuarioTipo(0));
+//            mostrarUsuariosTipo(buscarUsuarioTipo(0));
             system("PAUSE");
             break;
         }
@@ -165,7 +92,7 @@ void menuEmpleado(stUsuario a)
             fflush(stdin);
             gets(documento);
             int id = buscarUsuarioDocumento(documento);
-            checkIn(extraerUsuario(id));
+//            checkIn(extraerUsuario(id));
             system("PAUSE");
             break;
         }
@@ -178,7 +105,7 @@ void menuEmpleado(stUsuario a)
             gets(documento);
             int id = buscarUsuarioDocumento(documento);
             stUsuario u = extraerUsuario(id);
-            checkOut(u);
+ //           checkOut(u);
             system("PAUSE");
             break;
         }
@@ -252,7 +179,7 @@ void menuAdministrador()
                     fflush(stdin);
                     gets(documento);
                     int id = buscarUsuarioDocumento(documento);
-                    mostrarReserva(extraerUsuario(id));
+///                    mostrarReserva(extraerUsuario(id));
                     system("PAUSE");
                     break;
                 }
@@ -330,7 +257,7 @@ void menuAdministrador()
                             char dato[50];
                             fflush(stdin);
                             gets(dato);
-                            ordenarPorNombreUsuario(dato);
+        //                    ordenarPorNombreUsuario(dato);
                             system("PAUSE");
                             break;
                         }
@@ -359,17 +286,17 @@ void menuAdministrador()
                         switch (seleccion)
                         {
                         case 1: // Huesped
-                            mostrarUsuariosTipo(buscarUsuarioTipo(0));
+          //                  mostrarUsuariosTipo(buscarUsuarioTipo(0));
                             system("PAUSE");
                             break;
 
                         case 2: // Empleado
-                            mostrarUsuariosTipo(buscarUsuarioTipo(1));
+//                            mostrarUsuariosTipo(buscarUsuarioTipo(1));
                             system("PAUSE");
                             break;
 
                         case 3: // Administrador
-                            mostrarUsuariosTipo(buscarUsuarioTipo(2));
+//                            mostrarUsuariosTipo(buscarUsuarioTipo(2));
                             system("PAUSE");
                             break;
 
@@ -426,7 +353,7 @@ void menuAdministrador()
 
                 case 6: // baja logica
                 {
-                    cambiarBorradoUsuario(pedirID());
+//                    cambiarBorradoUsuario(pedirID());
                     break;
                 }
 
@@ -436,7 +363,7 @@ void menuAdministrador()
                     printf("Ingrese letra con la que filtra: ");
                     fflush(stdin);
                     gets(nombre);
-                    ordenarPorNombreUsuario(nombre);
+//                    ordenarPorNombreUsuario(nombre);
                     break;
                 }
 
@@ -447,7 +374,7 @@ void menuAdministrador()
                     fflush(stdin);
                     gets(documento);
                     int id = buscarUsuarioDocumento(documento);
-                    checkIn(extraerUsuario(id));
+    //                checkIn(extraerUsuario(id));
                     printf("Bienvenido\n");
                     system("PAUSE");
                     break;
@@ -461,7 +388,7 @@ void menuAdministrador()
                     gets(documento);
                     int id = buscarUsuarioDocumento(documento);
                     stUsuario u = extraerUsuario(id);
-                    checkOut(u);
+      //              checkOut(u);
                     printf("Hasta luego\n");
                     system("PAUSE");
                     break;
@@ -523,14 +450,14 @@ void menuAdministrador()
 
                 case 4: // Eliminar Habitacion
                 {
-                    borrarHabitacion(pedirID());
+        //borrarHabitacion(pedirID());
                     system("PAUSE");
                     break;
                 }
 
                 case 5: // baja logica habitacion
                 {
-                    cambiarBorradoHabitacion(pedirID());
+      //              cambiarBorradoHabitacion(pedirID());
                     break;
                 }
 
@@ -540,7 +467,7 @@ void menuAdministrador()
                     printf("Que tipo de habitacion buscas?\n");
                     fflush(stdin);
                     gets(dato);
-                    ordenarPorTipoHabitacion(dato);
+                   // ordenarPorTipoHabitacion(dato);
                     break;
                 }
 
@@ -571,13 +498,13 @@ void menuAdministrador()
                 {
                 case 1: // Mostrar consumible
                 {
-                    mostrarConsumibles();
+//                    mostrarConsumibles();
                     system("PAUSE");
                     break;
                 }
                 case 2: // Agregar Consumible
                 {
-                    agregarConsumibleArchivo();
+            //        agregarConsumibleArchivo();
                     system("PAUSE");
                     break;
                 }
@@ -587,13 +514,13 @@ void menuAdministrador()
                     printf("Ingrese una opcion: ");
                     int opcion = 0;
                     scanf("%i", &opcion);
-                    cambiarDatosDeConsumible(opcion, pedirID());
+               //     cambiarDatosDeConsumible(opcion, pedirID());
                     system("PAUSE");
                     break;
                 }
                 case 4: // Eliminar Consumible
                 {
-                    if (borrarConsumbible(pedirID()) == 0)
+/*                    if (borrarConsumbible(pedirID()) == 0)
                     {
                         printf("Consumible borrado");
                     }
@@ -601,20 +528,20 @@ void menuAdministrador()
                     {
                         printf("No se encuentra el consumible");
                     }
-                    system("PAUSE");
+                    system("PAUSE");*/
                     break;
                 }
                 case 5: // baja Logica
                 {
-                    cambiarBorradoConsumible(pedirID);
+//                    cambiarBorradoConsumible(pedirID);
                     break;
                 }
                 case 6: //Mostrar Consumibles por precio
                 {
-                    stUtils u = crearMatrizConsumibles();
+   /*                 stUtils u = crearMatrizConsumibles();
                     ordenarPorInsercionMatrizFilaFija(u.idPrecio, 1, u.cantidad);
                     imprimirMatrizConNombres(u.idPrecio, u.cantidad);
-                    system("PAUSE");
+                    system("PAUSE");*/
                     break;
                 }
                 case 0:
@@ -633,14 +560,14 @@ void menuAdministrador()
 
         case 5: // Crear Backup
         {
-            crearBackup();
+          /*  crearBackup();*/
             system("PAUSE");
             break;
         }
 
         case 6: // Restaurar Backup
         {
-            restaurarBackup();
+            /*restaurarBackup();*/
             system("PAUSE");
             break;
         }
