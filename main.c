@@ -2,5 +2,12 @@
 
 int main(){
     printf("helloworld");
-    return 0;
+
+
+    menuAdministrador();
+
+
+
+
+return 0;
 }
