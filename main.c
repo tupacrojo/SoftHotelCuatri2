@@ -172,7 +172,11 @@ int main()
     lista = cargarListaDobleArchivo(lista,aUsuarios);
     imprimirDesdePrincipio(lista);
     ///CargarUnArchivo();
+<<<<<<< Updated upstream
     ///MostrarUnArchivo();
+=======
+    ///MostrarUnArchivoServicios();
+>>>>>>> Stashed changes
     MenuServicios();
     */
     crearBackupEscritorio();
