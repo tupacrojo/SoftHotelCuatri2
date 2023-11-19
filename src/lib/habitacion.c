@@ -102,25 +102,7 @@ void agregarHabitacion(stRegHabitacion *a)
 
     opcion = 0;
     printf("\nCual es el tipo de habitacion? ");
-    /*
-    printf("0- Basica\n1- Deluxe\n2- Suite\n3- Suite Premium");
-    scanf("%i", &opcion);
-    switch (opcion)
-    {
-    case 0:
-        strcpy(a->tipo, "Basica");
-        break;
-    case 1:
-        strcpy(a->tipo, "Deluxe");
-        break;
-    case 2:
-        strcpy(a->tipo, "Suite");
-        break;
-    case 3:
-        strcpy(a->tipo, "Suite premium");
-        break;
-    }
-    */
+/// hacer
     system("clear || cls");
     printf("Agregado exitosamente\n");
 }
@@ -162,32 +144,10 @@ stRegHabitacion agregarHabitacionPorParametro(int id, int piso, int caracteristi
     a.borrado = 0;
     a.estado = 0;
     a.piso = piso;
-    switch (tipo)
-    {
-    case 0:
-        strcpy(a.tipo, "Basica");
-        break;
-    case 1:
-        strcpy(a.tipo, "Deluxe");
-        break;
-    case 2:
-        strcpy(a.tipo, "Suite");
-        break;
-    case 3:
-        strcpy(a.tipo, "Suite premium");
-        break;
-    default:
-        strcpy(a.tipo, "Basica");
-        break;
-    }
+/// falta caracteristica
     return a;
 }
 
-
-int exportarCaracteristicaArchivo(char caracteristica[])
-{
-    FILE * archi = fopen()
-}
 
 /** \fn int borrarHabitacion(int id)
  * \brief Accede al archivo y elimina los valores de la habitacion selecionado por id (id no se borra).

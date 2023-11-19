@@ -979,7 +979,7 @@ void mostrarReservaEnArchivo() // muestra todos los tipos
         while (!feof(archi))
         {
             fread(&aux, sizeof(stUsuario), 1, archi);
-            if (!feof(archi) && (strcmp(aux.reserva.habitacion.tipo, vacio.habitacion.tipo) > 0))
+            if (!feof(archi) && (strcmp(aux.reserva.habitacion.caracteristicas, vacio.habitacion.caracteristicas) > 0))
             {
                 mostrarReserva(aux.reserva);
                 Sleep(500);
@@ -1008,18 +1008,7 @@ int crearReserva(int id)
     scanf("%i", &opcion);
     switch (opcion)
     {
-    case 0:
-        strcpy(r.habitacion.tipo, "Basica");
-        break;
-    case 1:
-        strcpy(r.habitacion.tipo, "Deluxe");
-        break;
-    case 2:
-        strcpy(r.habitacion.tipo, "Suite");
-        break;
-    case 3:
-        strcpy(r.habitacion.tipo, "Suite premium");
-        break;
+//definir caracteristicas habitacion
     }
 
     do

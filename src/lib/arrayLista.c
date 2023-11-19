@@ -6,7 +6,7 @@ NodoPiso * iniclista (){
     return NULL;
 }
 
-NodoPiso * crearNodo (archivo DATO){
+NodoPiso * crearNodo (stRegHabitacion DATO){
     NodoPiso * aux = (NodoPiso *) malloc(sizeof (NodoPiso));
 
     aux->DATOS.cantCamas = DATO.cantCamas;
@@ -32,11 +32,11 @@ return lista;
 
 void CargarArray (stDeCelda ARRAY[]){
     FILE * archi = fopen (aCaracteristicas,"rb");
-    archivo aux;
+    stRegHabitacion aux;
 
     iniciallizarTodo(ARRAY);
 
-    while (fread(&aux,sizeof(archivo),1,archi)>0){
+    while (fread(&aux,sizeof(stRegHabitacion),1,archi)>0){
        ARRAY[aux.idPiso] = insertar(ARRAY,aux,aux.idPiso);
     }
 
@@ -53,7 +53,7 @@ void iniciallizarTodo (stDeCelda ARRAY[]){
 }
 
 
-stDeCelda insertar (stDeCelda array[], archivo aux,int posicion){
+stDeCelda insertar (stDeCelda array[], stRegHabitacion aux,int posicion){
     if (array[posicion].lista == NULL){
         array[posicion].lista = crearNodo(aux);
     }else{
@@ -87,7 +87,7 @@ void FuncionPrincipal (){
 
     //funcion2();
 
-    ArchivoPrecios arrayprecio[9];
+    stCaracteristicas arrayprecio[9];
 
     CargarArrayPecios(arrayprecio);
 
@@ -106,7 +106,7 @@ void CargarArchi (FILE * archi){
     char seleccoin = 's';
     int validacion=1;
 
-    archivo aux;
+    stRegHabitacion aux;
 
     while (seleccoin != 'n'){
         srand(time(NULL));
@@ -135,7 +135,7 @@ void CargarArchi (FILE * archi){
             scanf ("%s", aux.tipoDeCama);
             validacion = validacionDeCamas(aux.tipoDeCama);
         }while (validacion !=1);
-        fwrite (&aux,sizeof(archivo),1,archi);
+        fwrite (&aux,sizeof(stRegHabitacion),1,archi);
 
 
 
@@ -146,9 +146,9 @@ void CargarArchi (FILE * archi){
 }
 
 void mostrar (FILE * archi){
-    archivo aux;
+    stRegHabitacion aux;
     int x = 1;
-    while (fread (&aux,sizeof(archivo),1,archi)>0){
+    while (fread (&aux,sizeof(stRegHabitacion),1,archi)>0){
         printf ("%i", x);
         printf("\nid: %i",aux.id);
         printf("\npiso: %i ",aux.idPiso);
@@ -246,7 +246,7 @@ void CargarArchiPrecios (FILE * archi){ /// CARGAMOS LOS PRECIOS DE LAS HABITACI
     char seleccoin = 's';
     int validacion=1;
 
-    ArchivoPrecios aux;
+    stCaracteristicas aux;
 
     while (seleccoin != 'n'){
         printf("caracteristicas: ");
@@ -268,7 +268,7 @@ void CargarArchiPrecios (FILE * archi){ /// CARGAMOS LOS PRECIOS DE LAS HABITACI
         printf("ingresar precio:");
         scanf("%i", &aux.precio);
 
-        fwrite (&aux,sizeof(ArchivoPrecios),1,archi);
+        fwrite (&aux,sizeof(stCaracteristicas),1,archi);
 
         printf ("\n\n   desea seguir cargando datos?... ");
         fflush(stdin);
@@ -276,12 +276,12 @@ void CargarArchiPrecios (FILE * archi){ /// CARGAMOS LOS PRECIOS DE LAS HABITACI
     }
 }
 
-void CargarArrayPecios (ArchivoPrecios ARRAY[]){
+void CargarArrayPecios (stCaracteristicas ARRAY[]){
     FILE * archi = fopen (aPrecios,"rb");
-    ArchivoPrecios aux;
+    stCaracteristicas aux;
     int x=0;
 
-    while (fread(&aux,sizeof(ArchivoPrecios),1,archi)>0){
+    while (fread(&aux,sizeof(stCaracteristicas),1,archi)>0){
        ARRAY[x] = insertarPrecio(ARRAY,aux,x);
        x++;
     }
@@ -289,7 +289,7 @@ void CargarArrayPecios (ArchivoPrecios ARRAY[]){
     fclose(archi);
 }
 
-ArchivoPrecios insertarPrecio (ArchivoPrecios ARRAY[], ArchivoPrecios aux, int posicion){
+stCaracteristicas insertarPrecio (stCaracteristicas ARRAY[], stCaracteristicas aux, int posicion){
     ARRAY[posicion].precio = aux.precio;
     strcpy(ARRAY[posicion].caracteristica, aux.caracteristica);
     strcpy(ARRAY[posicion].tipoCama, aux.tipoCama);
@@ -297,14 +297,13 @@ ArchivoPrecios insertarPrecio (ArchivoPrecios ARRAY[], ArchivoPrecios aux, int p
 return ARRAY[posicion];
 }
 
-void mostrarArrayPrecios (ArchivoPrecios ARRAY[]){
+void mostrarArrayPrecios (stCaracteristicas ARRAY[]){
     int i =0;
 
     while (i < 9){
         printf("%s\n", ARRAY[i].caracteristica);
         printf("%s\n", ARRAY[i].tipoCama);
         printf("%i\n\n", ARRAY[i].precio);
-
         i++;
     }
 }

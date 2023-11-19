@@ -1,8 +1,8 @@
 #pragma once
 
-typedef struct //este es la estructura que alamcena las caracteristicas de la habitacion 
+typedef struct
 {
-    int id;
-    int borrado;
-    char tipo[30]; // vista al mar, cama matrinomial, perroincluido
-}stRegCaracteristicas;
+    char caracteristica[25];
+    char tipoCama[13];
+    int precio;
+} stCaracteristicas;

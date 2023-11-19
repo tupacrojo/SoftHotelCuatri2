@@ -5,7 +5,8 @@
 #include <string.h>
 #include <time.h>
 #include "../config/files.h"
-
+#include "habitacion.h"
+#include "caracteristicas.h"
 typedef struct
 {
     int id;
@@ -27,29 +28,12 @@ typedef struct
     NodoPiso *lista;
 } stDeCelda;
 
-typedef struct
-{
-    int id;
-    int ocupado;              /// 1 si 0 no
-    char caracteristicas[25]; /// vista al mar, balcon, Espaciosa
-    int cantCamas;
-    char tipoDeCama[13]; /// simple, matrimonial o combinada
-    int idPiso;
-} archivo;
-
-typedef struct
-{
-    char caracteristica[25];
-    char tipoCama[13];
-    int precio;
-} ArchivoPrecios;
-
 ///                                     PROTOTIPADO
 NodoPiso *iniclista();
-NodoPiso *crearNodo(archivo DATO);
+NodoPiso *crearNodo(stRegHabitacion DATO);
 NodoPiso *agregarALista(NodoPiso *lista, NodoPiso *DATO);
 void CargarArray(stDeCelda ARRAY[]);
-stDeCelda insertar(stDeCelda array[], archivo aux, int posicion);
+stDeCelda insertar(stDeCelda array[], stRegHabitacion aux, int posicion);
 void FuncionPrincipal();
 void CargarArchi(FILE *archi);
 void mostrar(FILE *archi);
@@ -60,6 +44,6 @@ int validacionDeString(char caracteristica[]);
 int validacionDeCamas(char caracteristica[]);
 void CargarArchiPrecios(FILE *archi);
 void funcion2();
-ArchivoPrecios insertarPrecio(ArchivoPrecios ARRAY[], ArchivoPrecios aux, int posicion);
-void CargarArrayPecios(ArchivoPrecios ARRAY[]);
-void mostrarArrayPrecios(ArchivoPrecios ARRAY[]);
+stCaracteristicas insertarPrecio(stCaracteristicas ARRAY[], stCaracteristicas aux, int posicion);
+void CargarArrayPecios(stCaracteristicas ARRAY[]);
+void mostrarArrayPrecios(stCaracteristicas ARRAY[]);

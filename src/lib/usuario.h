@@ -29,9 +29,6 @@ int borrarReserva(char documento[]);
 int crearReserva(int id);
 void mostrarReserva(stReserva r);
 void mostrarReservaEnArchivo();
-
-
-/// void agregarConsumoConsumible(stUsuario u, stConsumibles c);
 void agregarUsuario(stUsuario *u);
 stUsuario agregarUsuarioPorParametro(int id, int tipo, char nombre[], char apellido[], char dni[], char contrasena[], int edad, char telefono[], char genero, int hijos, char estadoCivil[]);
 void agregarUsuarioArchivo();
@@ -58,10 +55,6 @@ void mostrarUsuarios();
 stUsuario iniciarSesion();
 int obtenerTipoUsuario(int id);
 stUsuario extraerUsuario(int id);
-/*
-Pila buscarUsuarioTipo(int tipo);
-void mostrarUsuariosTipo(Pila p);
-*/
 int verificarContrasena(int id, char contrasena[]);
 int borrarUsuario(int id);
 void borraDatosUsuario(stUsuario *u);
