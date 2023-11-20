@@ -92,6 +92,5 @@ void buscarYborrarEvento(celdaEvento eventos[], int validos, int idMes, int dia)
 void funcionBorrarEvento(celdaEvento eventos[],int validos);
 void funcionCargarEvento ();
 void borrarUnRegistroDelArchivo(int mes, int dia);
-int buscarEventoBorrado(stRegistroEvento evento);
 
 #endif // EVENTO_H_INCLUDED

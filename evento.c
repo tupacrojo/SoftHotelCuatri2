@@ -177,14 +177,14 @@ stRegistroEvento cargarUnEvento()
 
     aux.borrado =0;  /// inicializo en 0 para que me lo cargue al archivo
 
-    printf("Ingrese mes del evento: \n");
+    printf("Ingrese NOMBRE del mes del evento: \n");
     fflush(stdin);
     gets(aux.mes);
     printf("Ingrese numero del mes: \n");
     scanf("%i",&aux.idMes);
     printf("Ingrese un dia: \n ");
     scanf("%i", &aux.dia);
-    printf("Ingrese tipo de vento: \n");
+    printf("Ingrese tipo de evento: \n");
     fflush(stdin);
     gets(aux.tipoEvento);
     printf("Ingrese hora de inicio: \n");
@@ -284,7 +284,7 @@ int pasarDatosDeArchivoAarregloEventos(celdaEvento eventos [],int dim, int valid
             strcpy(cliente.telefono, aux.telefono);
             strcpy(cliente.dni, aux.dni);
 
-            if(!buscarEventoBorrado(aux))   /// compruebo que el registro no este borrado
+            if(aux.borrado == 0)   /// compruebo que el registro no este borrado
             {
                 validos = altaEventos(eventos, dim, validos, cliente,datoMes);
             }
@@ -585,14 +585,3 @@ void borrarUnRegistroDelArchivo(int mes, int dia)
     }
 }
 
-
-int buscarEventoBorrado(stRegistroEvento evento)
-{
-    if(evento.borrado == 0)
-    {
-        return 0;
-    } else
-    {
-        return 1;
-    }
-}

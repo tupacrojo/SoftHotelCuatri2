@@ -15,7 +15,7 @@ int main()
 
 
     /// FUNCION PARA QUE EL USUARIO CARGUE UN SOLO EVENTO (Aca lo cargo en el archivo)
-   // funcionCargarEvento();
+  //  funcionCargarEvento();
     /// FUNCION PARA CARGAR EL ARREGLO:
     validos = pasarDatosDeArchivoAarregloEventos(eventos,11,validos);
     /// FUNCION PARA MOSTRAR EL ARREGLO COMPLETO:
@@ -28,8 +28,8 @@ int main()
    funcionSumarCantEventosMes(eventos,validos);
     /// FUNCION PARA VER LAS GANANCIAS DE UN MES:
     funcionSumarGananciasMes(eventos,validos);
- */   /// FUNCION PARA BORRAR UN EVENTO DE UN MES:
-   funcionBorrarEvento(eventos,validos);
+   /// FUNCION PARA BORRAR UN EVENTO DE UN MES:
+  */ funcionBorrarEvento(eventos,validos);
 
 
     return 0;
